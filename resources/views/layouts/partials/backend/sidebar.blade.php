@@ -20,6 +20,14 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('category.index') }}">
+                <div class="parent-icon">
+                    <ion-icon name="copy-sharp"></ion-icon>
+                </div>
+                <div class="menu-title">Category</div>
+            </a>
+        </li>
     </ul>
     <!--end navigation-->
 </aside>

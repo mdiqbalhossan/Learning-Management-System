@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -15,8 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'desc')->all();
+        $categories = Category::orderBy('id', 'desc')->get();
         return view('admin.category.index', compact('categories'));
+        // dd($categories);
     }
 
     /**
@@ -26,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -37,7 +40,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $filename = '';
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/category/', $filename);
+        }
+        Category::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'image' => $filename,
+            'status' => $request->status,
+        ]);
+        $notification = array(
+            'message' => 'Category created successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('category.index')->with($notification);
     }
 
     /**
@@ -46,9 +69,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        // return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -57,9 +80,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -69,9 +92,35 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $filename = '';
+        if ($request->hasFile('image')) {
+
+            $destination = 'uploads/category/' . $category->image;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/category/', $filename);
+        }
+        $category->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'image' => $filename,
+            'status' => $request->status,
+        ]);
+        $notification = array(
+            'message' => 'Category updated successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('category.index')->with($notification);
     }
 
     /**
@@ -80,8 +129,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $destination = 'uploads/category/' . $category->image;
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+        $category->delete();
+        $notification = array(
+            'message' => 'Category Deleted successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }

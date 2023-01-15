@@ -23,9 +23,17 @@
         <li>
             <a href="{{ route('category.index') }}">
                 <div class="parent-icon">
-                    <ion-icon name="copy-sharp"></ion-icon>
+                    <i class="fadeIn animated bx bx-label"></i>
                 </div>
                 <div class="menu-title">Category</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('course.index') }}">
+                <div class="parent-icon">
+                    <ion-icon name="copy-sharp"></ion-icon>
+                </div>
+                <div class="menu-title">Course</div>
             </a>
         </li>
     </ul>

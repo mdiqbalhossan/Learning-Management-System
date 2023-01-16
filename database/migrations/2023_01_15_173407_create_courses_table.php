@@ -21,14 +21,14 @@ return new class extends Migration
             $table->string('level')->nullable();
             $table->text('details')->nullable();
             $table->string('short_description')->nullable();
-            $table->boolean('is_popular')->default(0);
+            $table->boolean('is_popular')->default(0)->nullable();
             $table->string('source')->nullable();
             $table->string('source_url')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('is_free')->default(0);
+            $table->boolean('is_free')->default(0)->nullable();
             $table->string('default_price')->nullable();
             $table->string('current_price')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(0)->nullable();
             $table->timestamps();
         });
     }

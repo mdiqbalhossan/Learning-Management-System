@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Category')
+@section('title','Course List')
 @push('css')
 <link href="{{ asset('backend') }}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 <link href="{{ asset('backend') }}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -9,7 +9,7 @@
 @section('content')
 <!--start breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">Category</div>
+    <div class="breadcrumb-title pe-3">Course</div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0 align-items-center">
@@ -17,7 +17,7 @@
                         <ion-icon name="copy-sharp"></ion-icon>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Category List</li>
+                <li class="breadcrumb-item active" aria-current="page">Course List</li>
             </ol>
         </nav>
     </div>
@@ -25,11 +25,11 @@
 <!--end breadcrumb-->
 <div class="row align-items-end">
     <div class="col">
-        <h6 class="mb-0 text-uppercase d-inline">Category List</h6>
+        <h6 class="mb-0 text-uppercase d-inline">Course List</h6>
     </div>
     <div class="col">
-        <a href="{{ route('category.create') }}" class="btn btn-success px-3 float-end">
-            <i class="lni lni-circle-plus"></i><span>Add Category</span>
+        <a href="{{ route('course.create') }}" class="btn btn-success px-3 float-end">
+            <i class="lni lni-circle-plus"></i><span>Add new Course</span>
         </a>
     </div>
 </div>
@@ -42,32 +42,32 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Slug</th>
+                        <th>Category</th>
                         <th>Image</th>
+                        <th>Price</th>
                         <th>Status</th>
-                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $key=>$category)
+                    @foreach ($courses as $key=>$course)
                     <tr>
                         <td>{{ $key+1 }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->slug }}</td>
-                        <td><img src="{{ asset('uploads/category') }}/{{ $category->image }}" width="32px" alt=""></td>
-                        <td>@if (($category->status != null))
+                        <td>{{ $course->name }}</td>
+                        <td>{{ $course->category->name }}</td>
+                        <td><img src="{{ asset('uploads/course') }}/{{ $course->image }}" width="32px" alt=""></td>
+                        <td>{{ $course->default_price }}</td>
+                        <td>@if (($course->status != null))
                             <span class="badge bg-success">Published</span>
                             @else
                             <span class="badge bg-danger">Pending</span>
                             @endif
                         </td>
-                        <td>{{ $category->created_at->diffForHumans() }}</td>
                         <td class="d-flex">
-                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary btn-sm"><i
+                            <a href="{{ route('course.edit', $course->id) }}" class="btn btn-primary btn-sm"><i
                                     class="fadeIn animated bx bx-edit"></i></a>
 
-                            <form method="POST" class="ms-2" action="{{ route('category.destroy', $category->id) }}">
+                            <form method="POST" class="ms-2" action="{{ route('course.destroy', $course->id) }}">
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
                                 <button type="submit" class="btn btn-sm btn-danger btn-flat show_confirm"
@@ -83,10 +83,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Slug</th>
+                        <th>Category</th>
                         <th>Image</th>
+                        <th>Price</th>
                         <th>Status</th>
-                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

@@ -29,12 +29,22 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('course.index') }}">
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon">
                     <ion-icon name="copy-sharp"></ion-icon>
                 </div>
                 <div class="menu-title">Course</div>
             </a>
+            <ul>
+                <li> <a href="{{ route('course.create') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Add Course
+                    </a>
+                </li>
+                <li> <a href="{{ route('course.index') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Course List
+                    </a>
+                </li>
+            </ul>
         </li>
     </ul>
     <!--end navigation-->

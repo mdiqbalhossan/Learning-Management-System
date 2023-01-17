@@ -44,6 +44,14 @@
                         <ion-icon name="ellipse-outline"></ion-icon>Course List
                     </a>
                 </li>
+                <li> <a href="{{ route('section.index') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Add Section
+                    </a>
+                </li>
+                <li> <a href="{{ route('lesson.index') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Add Lesson
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

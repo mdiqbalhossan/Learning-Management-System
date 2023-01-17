@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\RegisteredAdminController;
+use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,4 +46,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('category', CategoryController::class);
     Route::resource('course', CourseController::class);
+    Route::resource('section', SectionController::class);
+    Route::resource('lesson', LessonController::class);
+    Route::post('lesson_course', [LessonController::class, 'section_id'])->name('section_id');
 });

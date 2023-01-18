@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\RegisteredAdminController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\SingleCourseController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +22,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::get('/course/{slug}', [SingleCourseController::class, 'index'])->name('single.course');
+Route::get('/cart', function () {
+    return view('cart');
 });
 
 Route::middleware([
@@ -35,8 +39,6 @@ Route::middleware([
 });
 
 /******* Admin Route ********/
-// Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () {
-// });
 Route::post('/admin/register', [RegisteredAdminController::class, 'store']);
 Route::get('/admin/register', [RegisteredAdminController::class, 'create'])->name('admin.register');
 Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);

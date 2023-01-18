@@ -22,6 +22,11 @@
                 </div>
                 <div class="blog-wrapper">
                     <div class="blog-desc">
+                        @if ($message = Session::get('success'))
+                        <div class="p-4 mb-3 bg-success rounded">
+                            <p class="text-danger">{{ $message }}</p>
+                        </div>
+                        @endif
                         <div class="shop-cart">
                             <table class="table table-bordered">
                                 <thead>
@@ -38,35 +43,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($cartItems as $item)
                                     <tr>
                                         <td>
-                                            <a href="#"><img src="upload/xcourse_01.png.pagespeed.ic.XTOvCuUmZu.png"
-                                                    alt="" class="alignleft img-thumbnail"> 1 Year Membership Plan</a>
+                                            <a href="#"><img
+                                                    src="{{ asset('uploads/course') }}/{{ $item->attributes->image }}"
+                                                    alt="" class="alignleft img-thumbnail"> {{ $item->name }}</a>
                                         </td>
                                         <td>
-                                            $40.00
+                                            ${{ $item->price }}
                                         </td>
                                         <td class="remove">
-                                            <a href="#">Remove</a>
+                                            <form action="{{ route('cart.remove') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" value="{{ $item->id }}" name="id">
+                                                <button class="btn btn-primary btn-sm"
+                                                    class="px-4 py-2 text-white bg-red-600">Remove</button>
+                                            </form>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="#"><img src="upload/xcourse_02.png.pagespeed.ic.PL7Wu2UcSB.png"
-                                                    alt="" class="alignleft img-thumbnail">Web Design Course</a>
-                                        </td>
-                                        <td>
-                                            $40.00
-                                        </td>
-                                        <td class="remove">
-                                            <a href="#">Remove</a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th colspan="5" class="text-right">
-                                            Total: $80.00
+                                            Total: ${{ Cart::getTotal() }}
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -98,25 +99,11 @@
                                 <img src="images/xcredit.jpg.pagespeed.ic.lGluDMrwzI.jpg" alt="">
                             </div>
                             <hr class="invis">
-                            <div class="payment-check">
-                                <p><strong>Select Payment Method</strong></p>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Paypal
-                                    </label>
-                                    &nbsp;&nbsp;
-                                    <label>
-                                        <input type="checkbox"> Credit Cart
-                                    </label>
-                                    &nbsp;&nbsp;
-                                    <label>
-                                        <input type="checkbox"> Test Payment
-                                    </label>
-                                </div>
-                            </div>
                             <hr class="invis">
+
                             <div class="edit-profile">
                                 <form role="form">
+                                    @if (!Auth::guard('web')->check())
                                     <div class="form-group">
                                         <label>First / Last Name</label>
                                         <input type="text" class="form-control" placeholder="Amanda FOX">
@@ -137,12 +124,21 @@
                                         <label>Re-Enter Password</label>
                                         <input type="password" class="form-control" placeholder="************">
                                     </div>
+                                    @else
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <div class="well total-price">
-                                        <p><strong> Purchase Total:</strong> $80.00 </p>
+                                        <p>You Logged in as a {{ Auth::user()->name }}. If you cannot purchases this
+                                            account please logout first. </p>
+                                    </div>
+                                    @endif
+                                    <div class="well total-price">
+                                        <p><strong> Purchase Total:</strong> ${{ Cart::getTotal() }} </p>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Pay Now</button>
                                 </form>
                             </div>
+
+
                             <hr class="invis">
                         </div>
                     </div>

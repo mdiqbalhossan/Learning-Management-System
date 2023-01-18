@@ -4,7 +4,7 @@
             <img src="{{ asset('backend') }}/assets/images/logo-icon-2.png" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Admin</h4>
+            <h4 class="logo-text">{{ Auth::guard('admin')->check() ? 'Admin' : 'User' }}</h4>
         </div>
         <div class="toggle-icon ms-auto">
             <ion-icon name="menu-sharp"></ion-icon>
@@ -12,6 +12,7 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
+        @if (Auth::guard('admin')->check())
         <li>
             <a href="{{ route('admin.dashboard') }}">
                 <div class="parent-icon">
@@ -54,6 +55,26 @@
                 </li>
             </ul>
         </li>
+        @else
+        <li>
+            <a href="{{ route('dashboard') }}">
+                <div class="parent-icon">
+                    <ion-icon name="home-sharp"></ion-icon>
+                </div>
+                <div class="menu-title">Dashboard</div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="parent-icon">
+                    <i class="fadeIn animated bx bx-label"></i>
+                </div>
+                <div class="menu-title">Course</div>
+            </a>
+        </li>
+        @endif
+
+
     </ul>
     <!--end navigation-->
 </aside>

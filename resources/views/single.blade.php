@@ -134,9 +134,19 @@
                     <p class="course-instructors">Category : <a href="#" title="">{{ $course->category->name }}</a></p>
                 </div>
                 <div class="course-button">
-                    <a href="page-shop-cart.html" class="btn btn-primary btn-block">${{ $course->current_price ??
-                        $course->default_price }}
-                        PURCHASE NOW</a>
+                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="course_id" value="{{ $course->id }}">
+                        <input type="hidden" name="course_name" value="{{ $course->name }}">
+                        <input type="hidden" name="course_price"
+                            value="{{ $course->current_price ?? $course->default_price }}">
+                        <input type="hidden" name="course_slug" value="{{ $course->slug }}">
+                        <input type="hidden" name="course_image" value="{{ $course->image }}">
+                        <button type="submit" class="btn btn-primary btn-block">${{
+                            $course->current_price ??
+                            $course->default_price }}
+                            PURCHASE NOW</button>
+                    </form>
                 </div>
             </div>
         </div>

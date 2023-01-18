@@ -46,8 +46,16 @@
                         <li><a href="page-contact.html">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a class="btn btn-success" href="{{ route('cart') }}"><i class="fa fa-cart-plus"></i>
+                                Cart ({{ Cart::getTotalQuantity()}})</a></li>
+                        @if (Auth::guard('web')->check())
+                        <li><a class="btn btn-primary" href="{{ route('dashboard') }}"><i class="fa fa-user"></i>
+                                My Account</a></li>
+                        @else
                         <li><a class="btn btn-primary" href="{{ route('register') }}"><i class="fa fa-sign-in"></i>
                                 Register Now</a></li>
+                        @endif
+
                     </ul>
                 </div>
             </div>

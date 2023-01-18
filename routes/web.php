@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\RegisteredAdminController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SingleCourseController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/course/{slug}', [SingleCourseController::class, 'index'])->name('single.course');
-Route::get('/cart', function () {
-    return view('cart');
-});
+
 
 Route::middleware([
     'auth:sanctum',
@@ -37,6 +36,11 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+/*********Cart Route */
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
 
 /******* Admin Route ********/
 Route::post('/admin/register', [RegisteredAdminController::class, 'store']);

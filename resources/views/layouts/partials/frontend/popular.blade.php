@@ -30,7 +30,8 @@
                         </div>
                     </div>
                     <div class="visible-buttons">
-                        <a title="Add to Cart" href="page-shop-cart.html"><span
+
+                        <a title="Add to Cart" href="{{ route('single.course', $popularCourse->slug) }}"><span
                                 class="fa fa-cart-arrow-down"></span></a>
                         <a title="Read More" href="{{ route('single.course', $popularCourse->slug) }}"><span
                                 class="fa fa-search"></span></a>

@@ -1,60 +1,125 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<!doctype html>
+<html lang="en" class="light-theme">
 
-        <x-jet-validation-errors class="mb-4" />
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+    <!-- loader-->
+    <link href="{{ asset('backend') }}/assets/css/pace.min.css" rel="stylesheet" />
+    <script src="{{ asset('backend') }}/assets/js/pace.min.js"></script>
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+    <!--plugins-->
+    <link href="{{ asset('backend') }}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+    <!-- CSS Files -->
+    <link href="{{ asset('backend') }}/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('backend') }}/assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="{{ asset('backend') }}/assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('backend') }}/assets/css/icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+    <title>User Registration</title>
+</head>
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+<body class="bg-white">
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms" required />
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+    <!--start wrapper-->
+    <div class="wrapper">
+        <div class="">
+            <div class="row g-0 m-0">
+                <div class="col-xl-6 col-lg-12">
+                    <div class="login-cover-wrapper">
+                        <div class="card shadow-none">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h4>Join us today</h4>
+                                    <p>Enter your email and password to register</p>
+                                </div>
+                                @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                                @endif
+                                <form class="form-body row g-3" method="POST" action="{{ route('register') }}">
+                                    @csrf
+                                    <div class="col-12">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required autofocus
+                                            autocomplete="name">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required autocomplete="new-password">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="password_confirmation"
+                                            name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckChecked">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                I agree the Terms and Conditions
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-warning">Sign Up</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <div class="position-relative border-bottom my-3">
+                                            <div class="position-absolute seperator translate-middle-y">or continue with
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <div
+                                            class="social-login d-flex flex-row align-items-center justify-content-center gap-2 my-2">
+                                            <a href="javascript:;" class=""><img
+                                                    src="{{ asset('backend') }}/assets/images/icons/facebook.png"
+                                                    alt=""></a>
+                                            <a href="javascript:;" class=""><img
+                                                    src="{{ asset('backend') }}/assets/images/icons/apple-black-logo.png"
+                                                    alt=""></a>
+                                            <a href="javascript:;" class=""><img
+                                                    src="{{ asset('backend') }}/assets/images/icons/google.png"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-12 text-center">
+                                        <p class="mb-0">Already have an account? <a href="{{ route('login') }}">Sign
+                                                in</a></p>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </x-jet-label>
+                    </div>
                 </div>
-            @endif
+                <div class="col-xl-6 col-lg-12">
+                    <div class="position-absolute top-0 h-100 d-xl-block d-none register-cover-img">
+                        <div class="text-white p-5 w-100">
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            <!--end row-->
+        </div>
+    </div>
+    <!--end wrapper-->
+
+
+</body>
+
+</html>

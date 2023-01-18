@@ -33,10 +33,18 @@
                         </div>
                     </div>
                     <div class=" shop-button clearfix">
-                        <a href="page-shop-single.html" class="btn btn-primary btn-block">$
-                            {{ ($course->current_price) ?
-                            $course->current_price : $course->default_price }}
-                            Purchase</a>
+                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                            <input type="hidden" name="course_name" value="{{ $course->name }}">
+                            <input type="hidden" name="course_price"
+                                value="{{ $course->current_price ?? $course->default_price }}">
+                            <input type="hidden" name="course_image" value="{{ $course->image }}">
+                            <button type="submit" class="btn btn-primary btn-block">${{
+                                $course->current_price ??
+                                $course->default_price }}
+                                PURCHASE NOW</button>
+                        </form>
                     </div>
                 </div>
             </div>

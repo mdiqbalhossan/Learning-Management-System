@@ -1,62 +1,80 @@
-<header class="header">
-    <div class="container">
-        <div class="hovermenu ttmenu">
-            <div class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="fa fa-bars"></span>
-                    </button>
-                    <div class="logo">
-                        <a class="navbar-brand" href="{{ route('home') }}"><img
-                                src="{{ asset('frontend') }}/images/xlogo.png.pagespeed.ic.vap6Ukaf0i.png" alt=""></a>
+<header class="header-style-1">
+    <div class="header-topbar topbar-style-1">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-xl-8 col-lg-8 col-sm-6">
+                    <div class="header-contact text-center text-sm-start text-lg-start">
+                        <a href="{{ route('home') }}">{{ setting('address') }}</a>
                     </div>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown ttmenu-half">
-                            <a href="{{ route('home') }}" data-toggle="dropdown" class="dropdown-toggle">Home</a>
 
-                        </li>
-                        <li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown"
-                                class="dropdown-toggle">Category
-                                <b class="fa fa-angle-down"></b></a>
-                            <ul class="dropdown-menu menu-bg wbg">
-                                <li>
-                                    <div class="ttmenu-content">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="box">
-                                                    <ul>
-                                                        @foreach ($categories as $category)
-                                                        <li><a href="{{ $category->slug }}">{{ $category->name }}</a>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                <div class="col-xl-4 col-lg-4 col-sm-6">
+                    <div class="header-socials text-center text-lg-end">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-navbar navbar-sticky">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="site-logo">
+                    <a href="index.html">
+                        <img src="{{ asset('settings') }}/{{ setting('logo') }}" alt="" class="img-fluid" />
+                    </a>
+                </div>
+
+                <div class="offcanvas-icon d-block d-lg-none">
+                    <a href="#" class="nav-toggler"><i class="fal fa-bars"></i></a>
+                </div>
+
+                <div class="header-category-menu d-none d-xl-block">
+                    <ul>
+                        <li class="has-submenu">
+                            <a href="#"><i class="fa fa-th me-2"></i>Categories</a>
+                            <ul class="submenu">
+                                @foreach ($categories as $category)
+                                <li><a href="#">{{ $category->name }}</a></li>
+
+                                @endforeach
                             </ul>
                         </li>
-                        <li><a href="page-about.html">About</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="page-contact.html">Contact</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="btn btn-success" href="{{ route('cart') }}"><i class="fa fa-cart-plus"></i>
-                                Cart ({{ Cart::getTotalQuantity()}})</a></li>
-                        @if (Auth::guard('web')->check())
-                        <li><a class="btn btn-primary" href="{{ route('dashboard') }}"><i class="fa fa-user"></i>
-                                My Account</a></li>
-                        @else
-                        <li><a class="btn btn-primary" href="{{ route('register') }}"><i class="fa fa-sign-in"></i>
-                                Register Now</a></li>
-                        @endif
+                </div>
 
+                <nav class="site-navbar ms-auto">
+                    <ul class="primary-menu">
+                        <li class="current">
+                            <a href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+
+                        <li>
+                            <a href="courses.html">Courses</a>
+                        </li>
+
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
                     </ul>
+
+                    <a href="#" class="nav-close"><i class="fal fa-times"></i></a>
+                </nav>
+
+                <div class="header-btn d-none d-xl-block">
+                    <a href="{{ route('login') }}" class="login">Login</a>
+                    <a href="{{ route('register') }}" class="btn btn-main-2 btn-sm-2 rounded">Sign up</a>
                 </div>
             </div>
         </div>

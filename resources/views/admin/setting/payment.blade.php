@@ -43,11 +43,11 @@
                         @csrf
                         <div class="col-12">
                             <label class="form-label">STRIPE KEY</label>
-                            <input type="text" class="form-control" name="title" value="{{ env('STRIPE_KEY') }}">
+                            <input type="text" class="form-control" value="{{ env('STRIPE_KEY') }}">
                         </div>
                         <div class="col-12">
                             <label class="form-label">STRIPE SECRET</label>
-                            <input type="text" class="form-control" name="title" value="{{ env('STRIPE_SECRET') }}">
+                            <input type="text" class="form-control" value="{{ env('STRIPE_SECRET') }}">
                         </div>
                         <div class="col-12">
                             <label class="form-label">Currency</label>

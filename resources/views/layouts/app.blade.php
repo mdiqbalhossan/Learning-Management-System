@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
     <!--Theme Styles-->
+    <link href="{{ asset('backend') }}/assets/css/dark-theme.css" rel="stylesheet" />
     <link href="{{ asset('backend') }}/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="{{ asset('backend') }}/assets/css/header-colors.css" rel="stylesheet" />
 

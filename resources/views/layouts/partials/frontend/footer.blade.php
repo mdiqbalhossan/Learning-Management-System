@@ -1,101 +1,95 @@
-<footer class="dark footer section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-md-6 col-xs-12">
-                <div class="widget">
-                    <div class="widget-title">
-                        <h4>About LearnPLUS</h4>
-                        <hr>
+<section class="footer">
+    <div class="footer-mid">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 me-auto col-sm-8">
+                    <div class="footer-logo mb-3">
+                        <img src="{{ asset('settings') }}/{{ setting('logo') }}" alt="" class="img-fluid">
                     </div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                        has been the industry's standard dummy text ever since the 1500s, when an unknown
-                        printer took...</p>
-                    <a href="#" class="btn btn-default">Read More</a>
+                    <div class="widget footer-widget mb-5 mb-lg-0">
+                        <p>Edumel is a Bootstrap Template for online courses
+                            education websites support multiple courses</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-md-6 col-xs-12">
-                <div class="widget">
-                    <div class="widget-title">
-                        <h4>Recent Tweets</h4>
-                        <hr>
-                    </div>
-                    <div class="twitter-widget">
-                        <ul class="latest-tweets">
-                            <li>
-                                <p><a href="#" title="">@Mark</a> Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Integer lorem quam.</p>
-                                <span>2 hours ago</span>
-                            </li>
-                            <li>
-                                <p><a href="#" title=""></a> Lorem ipsum dolor sit amet, consectetur adipiscing
-                                    elit. Integer lorem quam.</p>
-                                <span>2 hours ago</span>
-                            </li>
+
+                <div class="col-xl-2 col-sm-4">
+                    <div class="footer-widget mb-5 mb-xl-0">
+                        <h5 class="widget-title">Explore</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Support</a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-md-6 col-xs-12">
-                <div class="widget">
-                    <div class="widget-title">
-                        <h4>Popular Courses</h4>
-                        <hr>
+
+                <div class="col-xl-2 col-sm-4">
+                    <div class="footer-widget mb-5 mb-xl-0">
+                        <h5 class="widget-title ">Categories</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">SEO Business</a></li>
+                            <li><a href="#">Digital Marketing</a></li>
+                            <li><a href="#">Graphic Design</a></li>
+                            <li><a href="#">Social Marketing</a></li>
+                        </ul>
                     </div>
-                    <ul class="popular-courses">
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_01.png.pagespeed.ic.2iuJZT3CaV.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_02.png.pagespeed.ic.c6RThoxSWC.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_03.png.pagespeed.ic.E_Ew4wn4ZP.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_04.png.pagespeed.ic.NGi9jRXTXk.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_05.png.pagespeed.ic.2iuJZT3CaV.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_06.png.pagespeed.ic.o2Uniwq-y5.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_07.png.pagespeed.ic.H-fRTeeP8u.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_08.png.pagespeed.ic.76ek5JLaEY.png" alt=""></a>
-                        </li>
-                        <li>
-                            <a href="single-course.html" title=""><img class="img-thumbnail"
-                                    src="upload/xservice_09.png.pagespeed.ic.FJcG938KC-.png" alt=""></a>
-                        </li>
-                    </ul>
                 </div>
-            </div>
-            <div class="col-md-3 col-md-6 col-xs-12">
-                <div class="widget">
-                    <div class="widget-title">
-                        <h4>Contact Details</h4>
-                        <hr>
+
+                <div class="col-xl-2 col-sm-4">
+                    <div class="footer-widget mb-5 mb-xl-0">
+                        <h5 class="widget-title">Links</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">News & Blogs</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                        </ul>
                     </div>
-                    <ul class="contact-details">
-                        <li><i class="fa fa-link"></i> <a href="#">www.yoursite.com</a></li>
-                        <li><i class="fa fa-envelope"></i> <a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-                        <li><i class="fa fa-phone"></i> +90 123 45 67</li>
-                        <li><i class="fa fa-fax"></i> +90 123 45 68</li>
-                        <li><i class="fa fa-home"></i> INC 22 Elizabeth Str. Melbourne. Victoria 8777.</li>
-                    </ul>
+                </div>
+
+                <div class="col-xl-2 col-sm-4">
+                    <div class="footer-widget mb-5 mb-xl-0">
+                        <h5 class="widget-title">Address</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li>
+                                <h6 class="text-white">Phone</h6><a href="#">+0800 327 8534</a>
+                            </li>
+                            <li>
+                                <h6 class="text-white">Email</h6><a href="#">support@tutori.com</a>
+                            </li>
+                        </ul>
+                        <div class="footer-socials mt-4">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</footer>
+
+    <div class="footer-btm">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-sm-12 col-lg-6">
+                    <p class="mb-0 copyright text-sm-center text-lg-start">{{ setting('footer_text') }}</p>
+                </div>
+                <div class="col-xl-6 col-sm-12 col-lg-6">
+                    <div class="footer-btm-links text-start text-sm-center text-lg-end">
+                        <a href="#">Legal</a>
+                        <a href="#">Supports</a>
+                        <a href="#">Terms</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-btm-top">
+        <a href="#top-header" class="js-scroll-trigger scroll-to-top"><i class="fa fa-angle-up"></i></a>
+    </div>
+
+</section>

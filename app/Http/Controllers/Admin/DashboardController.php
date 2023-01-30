@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Course;
+use App\Models\Enroll;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -11,7 +14,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $total = [
+            'users' => User::count(),
+            'course' => Course::count(),
+            'orders' => Enroll::count(),
+            'income' => Enroll::where('payment_status', 'completed')->sum('payment_amount'),
+        ];
+
+        $recent_orders = Enroll::with('user', 'course')->orderBy('id', 'DESC')->limit(5)->get();
+
+        return view('admin.dashboard', compact('total', 'recent_orders'));
     }
 
     public function profile()

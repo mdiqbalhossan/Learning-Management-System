@@ -1,78 +1,56 @@
-@if ($courses->count()>0)
-<section class="gray section">
+<section class="section-padding course-filter-section">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title text-center">
-                    <h4>All Courses</h4>
-                    <p>Listed Below Our All Courses</p>
+        <div class="row align-items-center justify-content-between mb-30">
+            <div class="col-xl-12">
+                <div class="heading text-center mb-40">
+                    <span class="subheading">Course Trending</span>
+                    <h2 class="font-lg">Explore popular courses</h2>
                 </div>
+
+                {{-- <div class="filter-wrap text-center">
+                    <ul class="course-filter ">
+                        <li class="active"><a href="#" data-filter="*"> All</a></li>
+                        <li><a href="#" data-filter=".cat1">printing</a></li>
+                        <li><a href="#" data-filter=".cat2">Web</a></li>
+                        <li><a href="#" data-filter=".cat3">illustration</a></li>
+                        <li><a href="#" data-filter=".cat4">media</a></li>
+                        <li><a href="#" data-filter=".cat5">crafts</a></li>
+                    </ul>
+                </div> --}}
             </div>
         </div>
-        <div class="row course-list shop-listing">
+    </div>
+
+    <div class="container-fluid container-padding">
+        <div class="row course-gallery justify-content-center">
             @foreach ($courses as $course)
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="shop-item-list entry">
-                    <div class="">
-                        <img src="{{ asset('uploads/course') }}/{{ $course->image }}" alt="">
-                        <div class="magnifier">
+            <div class="course-item cat1 cat5 col-lg-3 col-md-6 col-sm-6">
+                <div class=" course-style-5 bg-white">
+                    <div class="course-header">
+                        <div class="course-thumb">
+                            <img src="{{ asset('uploads/course') }}/{{ $course->image }}" alt="" class="img-fluid">
+                            <div class="course-price">{{ setting('currency_symbol') }} {{ $course->default_price ??
+                                $course->current_price }}</div>
                         </div>
                     </div>
-                    <div class="shop-item-title clearfix">
-                        <h4><a href="{{ route('single.course',$course->slug) }}">{{ $course->name }}</a></h4>
-                        <p>{!! Str::words($course->details,100) !!}</p>
-                        <div class="shopmeta">
-                            <span class="pull-left">$
-                                @if ($course->current_price)
-                                <del>{{ $course->default_price }}</del>
-                                @else
-                                {{ $course->default_price }}
-                                @endif
-                            </span>
-                            <span class="badge badge-success pull-right">{{ $course->category->name }}</span>
+
+                    <div class="course-content">
+                        <div class="course-meta meta-style-1">
+                            <span class="lessons"><i class="far fa-play-circle me-2"></i>26 Lectures</span>
+                            <span class="label">{{ Str::title($course->level) }}</span>
                         </div>
-                    </div>
-                    <div class=" shop-button clearfix">
-                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="course_id" value="{{ $course->id }}">
-                            <input type="hidden" name="course_name" value="{{ $course->name }}">
-                            <input type="hidden" name="course_price"
-                                value="{{ $course->current_price ?? $course->default_price }}">
-                            <input type="hidden" name="course_image" value="{{ $course->image }}">
-                            <button type="submit" class="btn btn-primary btn-block">${{
-                                $course->current_price ??
-                                $course->default_price }}
-                                PURCHASE NOW</button>
-                        </form>
+                        <h4> <a href="{{ route('single.course',$course->slug) }}">{{ $course->name }}</a> </h4>
+
+                        <div class="course-footer mt-20 d-flex align-items-center justify-content-between">
+                            <span class="students"><i class="far fa-user-alt me-2"></i>51 Students</span>
+                            <a href="{{ route('single.course',$course->slug) }}" class="rounded-btn"><i
+                                    class="fa fa-long-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="text-center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
     </div>
+    <!--course-->
 </section>
-@endif

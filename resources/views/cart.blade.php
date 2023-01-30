@@ -43,7 +43,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                    $course_id = array();
+                                    @endphp
                                     @foreach ($cartItems as $item)
+                                    @php
+                                    $course_id[] = $item->id;
+                                    @endphp
                                     <tr>
                                         <td>
                                             <a href="#"><img
@@ -102,27 +108,28 @@
                             <hr class="invis">
 
                             <div class="edit-profile">
-                                <form role="form">
+                                <form role="form" method="POST" action="{{ route('cart.payment') }}">
+                                    @csrf
+                                    {{-- <input type="hidden" name="course_id" value="{{ $course_id }}"> --}}
                                     @if (!Auth::guard('web')->check())
                                     <div class="form-group">
                                         <label>First / Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Amanda FOX">
+                                        <input type="text" class="form-control" placeholder="Amanda FOX" name="name">
                                     </div>
                                     <div class="form-group">
                                         <label>Email Address</label>
-                                        <input type="email" class="form-control" placeholder="name@learnplus.com">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username">
+                                        <input type="email" class="form-control" placeholder="name@learnplus.com"
+                                            name="email">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="************">
+                                        <input type="password" class="form-control" placeholder="************"
+                                            name="password">
                                     </div>
                                     <div class="form-group">
                                         <label>Re-Enter Password</label>
-                                        <input type="password" class="form-control" placeholder="************">
+                                        <input type="password" class="form-control" placeholder="************"
+                                            name="password_confirmation">
                                     </div>
                                     @else
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">

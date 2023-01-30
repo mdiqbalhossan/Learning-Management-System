@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('title','Admin Dashboard')
-@push('css')
-<!--plugins-->
-<link href="{{ asset('backend') }}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-<link href="{{ asset('backend') }}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-<link href="{{ asset('backend') }}/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-@endpush
+
 @section('content')
 <!--start breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">

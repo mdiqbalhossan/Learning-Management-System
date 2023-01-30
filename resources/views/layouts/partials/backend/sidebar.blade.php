@@ -55,6 +55,51 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon">
+                    <i class="fadeIn animated bx bx-user-circle"></i>
+                </div>
+                <div class="menu-title">Student</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('student.create') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Add Student
+                    </a>
+                </li>
+                <li> <a href="{{ route('student.index') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Student List
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="{{ route('purchase.course') }}">
+                <div class="parent-icon">
+                    <i class="fadeIn animated bx bx-purchase-tag-alt"></i>
+                </div>
+                <div class="menu-title">Purchased Course</div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon">
+                    <i class="fadeIn animated bx bx-cog"></i>
+                </div>
+                <div class="menu-title">Settings</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('setting.main') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Main Setting
+                    </a>
+                </li>
+                <li> <a href="{{ route('setting.payment') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Payment Options
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         @else
         <li>
             <a href="{{ route('dashboard') }}">

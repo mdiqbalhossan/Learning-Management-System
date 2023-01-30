@@ -23,26 +23,9 @@
                             Logout</a>
                     </li>
                     @else
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-lock"></i>
-                            Login & Register</a>
-                        <div class="dropdown-menu">
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
-                                <div class="form-title">
-                                    <h4>Login Area</h4>
-                                    <hr>
-                                </div>
-                                <input class="form-control" type="text" name="email" placeholder="User Name or email">
-                                <div class="formpassword">
-                                    <input class="form-control" type="password" name="password" placeholder="******">
-                                </div>
-                                <div class="clearfix"></div>
-                                <button type="submit" class="btn btn-block btn-primary">Login</button>
-                                <hr>
-                                <h4><a href="{{ route('register') }}">Create an Account</a></h4>
-                            </form>
-                        </div>
+                    <li>
+                        <a class="btn btn-primary" href="{{ route('login') }}"><i class="fa fa-lock"></i>
+                            Login</a>
                     </li>
                     @endif
                 </ul>

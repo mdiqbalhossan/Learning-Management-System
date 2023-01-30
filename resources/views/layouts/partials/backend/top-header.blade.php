@@ -216,19 +216,18 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                         data-bs-toggle="dropdown">
                         <div class="user-setting">
-                            <img src="{{ asset('backend') }}/assets/images/avatars/06.png" class="user-img" alt="">
+                            <img src="{{ asset('settings') }}/{{ Auth::user()->image }}" class="user-img"
+                                alt="{{ Auth::user()->name }}">
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex flex-row align-items-center gap-2">
-                                    <img src="{{ asset('backend') }}/assets/images/avatars/06.png" alt=""
+                                    <img src="{{ asset('settings') }}/{{ Auth::user()->image }}" alt=""
                                         class="rounded-circle" width="54" height="54">
                                     <div class="">
                                         <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
-                                        <small class="mb-0 dropdown-user-designation text-secondary">UI
-                                            Developer</small>
                                     </div>
                                 </div>
                             </a>
@@ -237,7 +236,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="pages-user-profile.html">
+                            <a class="dropdown-item" href="{{ route('admin.profile') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="">
                                         <ion-icon name="person-outline"></ion-icon>
@@ -247,12 +246,12 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('admin.change.password') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="">
                                         <ion-icon name="settings-outline"></ion-icon>
                                     </div>
-                                    <div class="ms-3"><span>Setting</span></div>
+                                    <div class="ms-3"><span>Update Password</span></div>
                                 </div>
                             </a>
                         </li>

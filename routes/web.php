@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::get('/category/{slug}', [WelcomeController::class, 'category'])->name('category');
+Route::get('/course', [WelcomeController::class, 'course'])->name('course');
 Route::get('/course/{slug}', [SingleCourseController::class, 'index'])->name('single.course');
 
 

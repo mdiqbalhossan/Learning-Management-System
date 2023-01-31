@@ -18,7 +18,7 @@
                     </div>
                     <div class="course-cat-content">
                         <h4 class="course-cat-title">
-                            <a href="#">{{ $category->name }}</a>
+                            <a href="{{ route('category', $category->slug) }}">{{ $category->name }}</a>
                         </h4>
                     </div>
                 </div>

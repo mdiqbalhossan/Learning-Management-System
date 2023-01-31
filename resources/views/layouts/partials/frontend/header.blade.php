@@ -42,7 +42,7 @@
                             <a href="#"><i class="fa fa-th me-2"></i>Categories</a>
                             <ul class="submenu">
                                 @foreach ($categories as $category)
-                                <li><a href="#">{{ $category->name }}</a></li>
+                                <li><a href="{{ route('category',$category->slug) }}">{{ $category->name }}</a></li>
 
                                 @endforeach
                             </ul>
@@ -58,7 +58,7 @@
                         <li><a href="about.html">About</a></li>
 
                         <li>
-                            <a href="courses.html">Courses</a>
+                            <a href="{{ route('course') }}">Courses</a>
                         </li>
 
                         <li>
@@ -73,6 +73,8 @@
                 </nav>
 
                 <div class="header-btn d-none d-xl-block">
+                    <a href="{{ route('cart') }}" class="login"><i class="fa fa-cart-arrow-down"
+                            aria-hidden="true"></i>&nbsp; ({{ Cart::getTotalQuantity()}})</a>
                     @if (Auth::guard('web')->check())
                     <a href="{{ route('dashboard') }}" class="login">Dashboard</a>
                     <a href="{{ route('logout') }}" class="btn btn-main-2 btn-sm-2 rounded">Logout</a>

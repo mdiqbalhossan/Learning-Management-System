@@ -73,8 +73,13 @@
                 </nav>
 
                 <div class="header-btn d-none d-xl-block">
+                    @if (Auth::guard('web')->check())
+                    <a href="{{ route('dashboard') }}" class="login">Dashboard</a>
+                    <a href="{{ route('logout') }}" class="btn btn-main-2 btn-sm-2 rounded">Logout</a>
+                    @else
                     <a href="{{ route('login') }}" class="login">Login</a>
                     <a href="{{ route('register') }}" class="btn btn-main-2 btn-sm-2 rounded">Sign up</a>
+                    @endif
                 </div>
             </div>
         </div>

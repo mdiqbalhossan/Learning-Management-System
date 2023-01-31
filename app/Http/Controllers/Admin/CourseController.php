@@ -115,7 +115,7 @@ class CourseController extends Controller
             'image' => 'mimes:png,jpg,jpeg',
         ]);
 
-        $filename = '';
+        $filename = $course->image;
         if ($request->hasFile('image')) {
             $destination = 'uploads/course/' . $course->image;
             if (FacadesFile::exists($destination)) {

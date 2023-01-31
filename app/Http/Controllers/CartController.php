@@ -21,6 +21,13 @@ class CartController extends Controller
         return view('cart', compact('categories', 'cartItems'));
     }
 
+    public function checkout()
+    {
+        $categories = Category::all();
+        $cartItems = \Cart::getContent();
+        return view('checkout', compact('categories', 'cartItems'));
+    }
+
     public function store(Request $request)
     {
         \Cart::add(array(

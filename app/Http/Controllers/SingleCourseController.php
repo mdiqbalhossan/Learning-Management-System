@@ -12,6 +12,12 @@ class SingleCourseController extends Controller
     {
         $course = Course::where('slug', $slug)->first();
         $categories = Category::where('status', '!=', null)->get();
-        return view('single', compact('course', 'categories'));
+        $popular_courses = Course::where('status', '!=', null)
+            ->orWhere('status', '!=', 0)
+            ->where('is_popular', '!=', null)
+            ->orderBy('id', 'desc')
+            ->limit(3)
+            ->get();
+        return view('single', compact('course', 'categories', 'popular_courses'));
     }
 }

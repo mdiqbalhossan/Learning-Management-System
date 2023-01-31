@@ -12,7 +12,7 @@ class WelcomeController extends Controller
     {
         $categories = Category::all();
         $popularCourses = Course::where('is_popular', '!=', null)->where('status', '!=', null)->get();
-        $courses = Course::where('status', '!=', null)->get();
+        $courses = Course::where('status', '!=', null)->orWhere('status', 1)->get();
         return view('welcome', compact('categories', 'popularCourses', 'courses'));
     }
 }

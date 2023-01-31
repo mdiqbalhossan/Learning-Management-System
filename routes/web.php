@@ -35,6 +35,7 @@ Route::middleware([
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::post('/payment', [CartController::class, 'payment'])->name('cart.payment');
 
 /***** Stripe Payment Route  */

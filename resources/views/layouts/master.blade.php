@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
 
+    @stack('css')
+
 </head>
 
 <body id="top-header">
@@ -73,7 +75,7 @@
 
     <script src="{{ asset('frontend') }}/assets/js/script.js"></script>
 
-
+    @stack('js')
 </body>
 
 </html>

@@ -1,123 +1,151 @@
-<!doctype html>
-<html lang="en" class="light-theme">
+<!DOCTYPE html>
+<html lang="zxx">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Edumel- Education Html Template by dreambuzz">
+    <meta name="keywords"
+        content="education,edumel,instructor,lms,online,instructor,dreambuzz,bootstrap,kindergarten,tutor,e learning">
+    <meta name="author" content="dreambuzz">
+
+    <title>User Register</title>
+
+    <!-- Mobile Specific Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/bootstrap/bootstrap.css">
+    <!-- Iconfont Css -->
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/flaticon/flaticon.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/fonts/gilroy/font-gilroy.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/magnific-popup/magnific-popup.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/animate-css/animate.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/animated-headline/animated-headline.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/owl/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/vendors/owl/assets/owl.theme.default.min.css">
 
-    <!-- loader-->
-    <link href="{{ asset('backend') }}/assets/css/pace.min.css" rel="stylesheet" />
-    <script src="{{ asset('backend') }}/assets/js/pace.min.js"></script>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/woocomerce.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
 
-    <!--plugins-->
-    <link href="{{ asset('backend') }}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-
-    <!-- CSS Files -->
-    <link href="{{ asset('backend') }}/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('backend') }}/assets/css/bootstrap-extended.css" rel="stylesheet">
-    <link href="{{ asset('backend') }}/assets/css/style.css" rel="stylesheet">
-    <link href="{{ asset('backend') }}/assets/css/icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <title>User Registration</title>
 </head>
 
-<body class="bg-white">
+<body id="top-header">
 
-    <!--start wrapper-->
-    <div class="wrapper">
-        <div class="">
-            <div class="row g-0 m-0">
-                <div class="col-xl-6 col-lg-12">
-                    <div class="login-cover-wrapper">
-                        <div class="card shadow-none">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <h4>Join us today</h4>
-                                    <p>Enter your email and password to register</p>
+    <section class="woocommerce single page-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-xl-7">
+
+                    <div class="signup-form">
+                        <div class="form-header">
+                            <h2 class="font-weight-bold mb-3">Sign Up</h2>
+                            <p class="woocommerce-register">
+                                Already have an account? <a href="{{ route('login') }}"
+                                    class="text-decoration-underline">Log in</a>
+                            </p>
+                        </div>
+
+                        <form method="post" class="woocommerce-form woocommerce-form-register register"
+                            action="{{ route('register') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                        <label>Name&nbsp;<span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="name" placeholder="Name">
+                                    </p>
                                 </div>
-                                @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
+
+                                <div class="col-xl-12">
+                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                        <label>Email&nbsp;<span class="required">*</span></label>
+                                        <input type="email" class="form-control" name="email" value=""
+                                            placeholder="Your Email">
+                                    </p>
                                 </div>
-                                @endif
-                                <form class="form-body row g-3" method="POST" action="{{ route('register') }}">
-                                    @csrf
-                                    <div class="col-12">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" required autofocus
-                                            autocomplete="name">
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password"
-                                            required autocomplete="new-password">
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-control" id="password_confirmation"
-                                            name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                    <div class="col-12 col-lg-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                I agree the Terms and Conditions
+                                <div class="col-xl-12">
+                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                        <label>Phone&nbsp;<span class="required">*</span></label>
+                                        <input type="phone" class="form-control" name="phone" value=""
+                                            placeholder="Your Phone">
+                                    </p>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                        <label>Password&nbsp;<span class="required">*</span></label>
+                                        <input type="password" class="form-control" name="password" value=""
+                                            placeholder="Password">
+                                    </p>
+                                </div>
+                                <div class="col-xl-6">
+                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                        <label>Re-Enter Password&nbsp;<span class="required">*</span></label>
+                                        <input type="password" class="form-control" name="password_confirmation"
+                                            value="" placeholder="Re-Enter Password">
+                                    </p>
+                                </div>
+
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center justify-content-between py-2">
+                                        <p class="form-row">
+                                            <label
+                                                class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__policy">
+                                                <input class="woocommerce-form__input woocommerce-form__input-checkbox"
+                                                    name="policy" type="checkbox" id="policy" value="forever">
+                                                <span>Accept
+                                                    the Terms and Privacy Policy</span>
                                             </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-12">
-                                        <div class="d-grid">
-                                            <button type="submit" class="btn btn-warning">Sign Up</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-12">
-                                        <div class="position-relative border-bottom my-3">
-                                            <div class="position-absolute seperator translate-middle-y">or continue with
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-12">
-                                        <div
-                                            class="social-login d-flex flex-row align-items-center justify-content-center gap-2 my-2">
-                                            <a href="javascript:;" class=""><img
-                                                    src="{{ asset('backend') }}/assets/images/icons/facebook.png"
-                                                    alt=""></a>
-                                            <a href="javascript:;" class=""><img
-                                                    src="{{ asset('backend') }}/assets/images/icons/apple-black-logo.png"
-                                                    alt=""></a>
-                                            <a href="javascript:;" class=""><img
-                                                    src="{{ asset('backend') }}/assets/images/icons/google.png"
-                                                    alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-12 text-center">
-                                        <p class="mb-0">Already have an account? <a href="{{ route('login') }}">Sign
-                                                in</a></p>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="position-absolute top-0 h-100 d-xl-block d-none register-cover-img">
-                        <div class="text-white p-5 w-100">
+                                        </p>
 
-                        </div>
+                                        <p class="woocommerce-LostPassword lost_password">
+                                            <a href="{{ route('password.request') }}">Forgot password?</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="woocommerce-FormRow form-row">
+                                <button type="submit" class="woocommerce-button button" name="register"
+                                    value="Register">Register</button>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!--end row-->
         </div>
-    </div>
-    <!--end wrapper-->
+    </section>
+    <!--shop register end-->
+
+
+
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    <!-- Main jQuery -->
+    <script src="{{ asset('frontend') }}/assets/vendors/jquery/jquery.js"></script>
+    <!-- Bootstrap 5:0 -->
+    <script src="{{ asset('frontend') }}/assets/vendors/bootstrap/popper.min.js"></script>
+    <script src="{{ asset('frontend') }}/assets/vendors/bootstrap/bootstrap.js"></script>
+    <!-- Counterup -->
+    <script src="{{ asset('frontend') }}/assets/vendors/counterup/waypoint.js"></script>
+    <script src="{{ asset('frontend') }}/assets/vendors/counterup/jquery.counterup.min.js"></script>
+    <!--  Owl Carousel -->
+    <script src="{{ asset('frontend') }}/assets/vendors/owl/owl.carousel.min.js"></script>
+    <!-- Isotope -->
+    <script src="{{ asset('frontend') }}/assets/vendors/isotope/jquery.isotope.js"></script>
+    <script src="{{ asset('frontend') }}/assets/vendors/isotope/imagelaoded.min.js"></script>
+    <!-- Animated Headline -->
+    <script src="{{ asset('frontend') }}/assets/vendors/animated-headline/animated-headline.js"></script>
+    <!-- Magnific Popup -->
+    <script src="{{ asset('frontend') }}/assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <script src="{{ asset('frontend') }}/assets/js/script.js"></script>
 
 
 </body>

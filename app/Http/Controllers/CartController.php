@@ -16,7 +16,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $categories = Category::where('status', '!=', null)->all();
+        $categories = Category::where('status', '!=', null)->get();
         $cartItems = \Cart::getContent();
         return view('cart', compact('categories', 'cartItems'));
     }

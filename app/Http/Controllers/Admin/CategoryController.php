@@ -97,7 +97,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        $filename = '';
+        $filename = $category->image;
         if ($request->hasFile('image')) {
 
             $destination = 'uploads/category/' . $category->image;

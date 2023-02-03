@@ -77,6 +77,7 @@
                                 <div class="author me-3">
                                     <img src="{{ asset('settings') }}/{{ getAdmin()->image }}" alt="" class="img-fluid">
                                     By <a href="#">{{ getAdmin()->name }}</a>
+                                    
                                 </div>
                                 <span class="students"><i class="far fa-user-alt me-2"></i>{{ totalStudent($course->id)
                                     }} Students</span>

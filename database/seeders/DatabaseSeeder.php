@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Lesson;
+use App\Models\Section;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +27,10 @@ class DatabaseSeeder extends Seeder
         // SettingSeeder::class;
 
         // $this->call(SettingSeeder::class);
-        $this->call(CourseSeeder::class);
+        // $this->call(CourseSeeder::class);
+        // $this->call(SectionSeeder::class);
+
+        // Section::factory()->count(30)->create();
+        // Lesson::factory()->count(30)->create();
     }
 }

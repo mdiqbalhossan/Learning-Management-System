@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class SingleCourseController extends Controller
@@ -13,11 +14,13 @@ class SingleCourseController extends Controller
         $course = Course::where('slug', $slug)->first();
         $categories = Category::where('status', '!=', null)->get();
         $popular_courses = Course::where('status', '!=', null)
-            ->orWhere('status', '!=', 0)
+            ->where('status', '!=', 0)
             ->where('is_popular', '!=', null)
             ->orderBy('id', 'desc')
             ->limit(3)
             ->get();
-        return view('single', compact('course', 'categories', 'popular_courses'));
+
+        $sections = Section::where('course_id', $course->id)->get();
+        return view('single', compact('course', 'categories', 'popular_courses', 'sections'));
     }
 }

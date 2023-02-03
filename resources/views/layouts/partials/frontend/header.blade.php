@@ -11,11 +11,10 @@
                 <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="header-socials text-center text-lg-end">
                         <ul class="list-inline">
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('facebook') }}"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('twitter') }}"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('linkedin') }}"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('youtube') }}"><i class="fab fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -27,7 +26,7 @@
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="site-logo">
-                    <a href="index.html">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('settings') }}/{{ setting('logo') }}" alt="" class="img-fluid" />
                     </a>
                 </div>
@@ -77,7 +76,15 @@
                             aria-hidden="true"></i>&nbsp; ({{ Cart::getTotalQuantity()}})</a>
                     @if (Auth::guard('web')->check())
                     <a href="{{ route('dashboard') }}" class="login">Dashboard</a>
-                    <a href="{{ route('logout') }}" class="btn btn-main-2 btn-sm-2 rounded">Logout</a>
+
+                    <a class="btn btn-main-2 btn-sm-2 rounded" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i
+                            class="fa fa-sign-out"></i>
+                        Logout</a>
+                    <form action="{{ route('logout') }}" method="POST" id="frm-logout">
+                        @csrf
+                    </form>
+                    
                     @else
                     <a href="{{ route('login') }}" class="login">Login</a>
                     <a href="{{ route('register') }}" class="btn btn-main-2 btn-sm-2 rounded">Sign up</a>

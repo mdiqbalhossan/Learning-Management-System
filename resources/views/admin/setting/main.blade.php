@@ -77,10 +77,10 @@
                         <img src="{{ asset('settings') }}/{{ $setting->favicon }}" alt="" width="48px">
                         <hr>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload User Login Background</label>
-                            <input class="form-control" type="file" name="login_background">
+                            <label for="formFile" class="form-label">Upload Breadcrumb Photo</label>
+                            <input class="form-control" type="file" name="breadcrumb">
                         </div>
-                        <img src="{{ asset('settings') }}/{{ $setting->login_background }}" alt="" width="48px">
+                        <img src="{{ asset('settings') }}/{{ $setting->breadcrumb_photo }}" alt="" width="48px">
                         <hr>
                         <div class="col-12">
                             <label class="form-label">Footer Text</label>

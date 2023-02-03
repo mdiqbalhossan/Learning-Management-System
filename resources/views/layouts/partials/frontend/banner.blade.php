@@ -3,9 +3,8 @@
         <div class="row align-items-center">
             <div class="col-md-12 col-xl-6 col-lg-6">
                 <div class="banner-content">
-                    <h1>Distant learning for further expansion </h1>
-                    <p>The ultimate planning solution for people who want to reach their personal goals Effortless
-                        comfortable.</p>
+                    <h1>{{ settingSlider('title') }}</h1>
+                    <p>{{ settingSlider('description') }}</p>
 
                     <div class="banner-form me-5">
                         <form action="#" class="form">
@@ -25,7 +24,7 @@
 
             <div class="col-md-12 col-xl-6 col-lg-6">
                 <div class="banner-img-round mt-5 mt-lg-0">
-                    <img src="{{ asset('frontend') }}/assets/images/banner/banner_img.png" alt="" class="img-fluid">
+                    <img src="{{ asset('settings') }}/{{ settingSlider('image') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </div> <!-- / .row -->

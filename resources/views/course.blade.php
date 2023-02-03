@@ -2,6 +2,17 @@
 
 @section('title', 'Courses')
 
+@push('css')
+<style>
+    .page-header {
+        background: url( {{ asset('settings') }}/{{ setting('breadcrumb_photo') }} ) !important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+@endpush
+
 @section('content')
 <section class="page-header">
     <div class="container">
@@ -64,10 +75,11 @@
                         <div class="course-meta-info">
                             <div class="d-flex align-items-center">
                                 <div class="author me-3">
-                                    <img src="assets/images/course/course-2.jpg" alt="" class="img-fluid">
-                                    By <a href="#">Josephin</a>
+                                    <img src="{{ asset('settings') }}/{{ getAdmin()->image }}" alt="" class="img-fluid">
+                                    By <a href="#">{{ getAdmin()->name }}</a>
                                 </div>
-                                <span class="students"><i class="far fa-user-alt me-2"></i>51 Students</span>
+                                <span class="students"><i class="far fa-user-alt me-2"></i>{{ totalStudent($course->id)
+                                    }} Students</span>
                             </div>
                         </div>
 

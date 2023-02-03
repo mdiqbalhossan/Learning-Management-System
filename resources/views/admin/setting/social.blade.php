@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title','Payment Settings')
+@section('title','Social Settings')
 @push('css')
 @endpush
 @section('content')
 <!--start breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">Payment Settings</div>
+    <div class="breadcrumb-title pe-3">Social Settings</div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0 align-items-center">
@@ -13,7 +13,7 @@
                         <ion-icon name="copy-sharp"></ion-icon>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Payment Settings</li>
+                <li class="breadcrumb-item active" aria-current="page">Social Settings</li>
             </ol>
         </nav>
     </div>
@@ -21,7 +21,7 @@
 <!--end breadcrumb-->
 <div class="row align-items-end">
     <div class="col">
-        <h6 class="mb-0 text-uppercase d-inline">Payment Settings</h6>
+        <h6 class="mb-0 text-uppercase d-inline">Social Settings</h6>
     </div>
     <div class="col">
         <button type="button" class="btn btn-danger px-3 float-end">
@@ -36,32 +36,29 @@
         <div class="card">
             <div class="card-body">
                 <div class="border p-3 rounded">
-                    <h6 class="mb-0 text-uppercase">Payment Settings</h6>
+                    <h6 class="mb-0 text-uppercase">Social Settings</h6>
                     <hr>
-                    <form class="row g-3" method="post" action="{{ route('setting.payment.update') }}"
+                    <form class="row g-3" method="post" action="{{ route('setting.social.update') }}"
                         enctype="multipart/form-data">
-                        @csrf
+                        @csrf                        
                         <div class="col-12">
-                            <label class="form-label">STRIPE KEY</label>
-                            <input type="text" class="form-control" value="{{ env('STRIPE_KEY') }}">
+                            <label class="form-label">Facebook</label>
+                            <input type="text" class="form-control" name="facebook" value="{{ $setting->social_link->facebook }}">
                         </div>
                         <div class="col-12">
-                            <label class="form-label">STRIPE SECRET</label>
-                            <input type="text" class="form-control" value="{{ env('STRIPE_SECRET') }}">
+                            <label class="form-label">Twitter</label>
+                            <input type="text" class="form-control" name="twitter"
+                                value="{{ $setting->social_link->twitter }}">
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Currency</label>
-                            <input type="text" class="form-control" name="currency" value="{{ $setting->currency }}">
+                            <label class="form-label">Linked In</label>
+                            <input type="text" class="form-control" name="linkedin"
+                                value="{{ $setting->social_link->linkedin }}">
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Currency Symbol</label>
-                            <input type="text" class="form-control" name="currency_symbol"
-                                value="{{ $setting->currency_symbol }}">
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label">Currency Position</label>
-                            <input type="text" class="form-control" name="currency_position"
-                                value="{{ $setting->currency_position }}">
+                            <label class="form-label">Youtube</label>
+                            <input type="text" class="form-control" name="youtube"
+                                value="{{ $setting->social_link->youtube }}">
                         </div>
                         <div class="col-12">
                             <div class="d-grid">

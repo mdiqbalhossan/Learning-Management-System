@@ -7,8 +7,7 @@
                         <img src="{{ asset('settings') }}/{{ setting('logo') }}" alt="" class="img-fluid">
                     </div>
                     <div class="widget footer-widget mb-5 mb-lg-0">
-                        <p>Edumel is a Bootstrap Template for online courses
-                            education websites support multiple courses</p>
+                        <p>{{setting('description')}}</p>
                     </div>
                 </div>
 
@@ -28,10 +27,9 @@
                     <div class="footer-widget mb-5 mb-xl-0">
                         <h5 class="widget-title ">Categories</h5>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="#">SEO Business</a></li>
-                            <li><a href="#">Digital Marketing</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                            <li><a href="#">Social Marketing</a></li>
+                            @foreach ($categories as $category)
+                            <li><a href="{{ route('category', $category->slug) }}">{{ $category->name }}</a></li>
+                            @endforeach                            
                         </ul>
                     </div>
                 </div>
@@ -51,19 +49,20 @@
                 <div class="col-xl-2 col-sm-4">
                     <div class="footer-widget mb-5 mb-xl-0">
                         <h5 class="widget-title">Address</h5>
+                        <p>{{ setting('address') }}</p>
                         <ul class="list-unstyled footer-links">
                             <li>
-                                <h6 class="text-white">Phone</h6><a href="#">+0800 327 8534</a>
+                                <h6 class="text-white">Phone</h6><a href="tel:{{ setting('phone') }}">{{ setting('phone') }}</a>
                             </li>
                             <li>
-                                <h6 class="text-white">Email</h6><a href="#">support@tutori.com</a>
+                                <h6 class="text-white">Email</h6><a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a>
                             </li>
                         </ul>
                         <div class="footer-socials mt-4">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                            <a href="{{ settingSocial('facebook') }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ settingSocial('twitter') }}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ settingSocial('linkedin') }}"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{ settingSocial('youtube') }}"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>

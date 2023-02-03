@@ -1,6 +1,16 @@
 @extends('layouts.master')
 
 @section('title', 'Courses')
+@push('css')
+<style>
+    .page-header {
+        background: url( {{ asset('settings') }}/{{ setting('breadcrumb_photo') }} ) !important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+@endpush
 
 @section('content')
 <section class="page-header">

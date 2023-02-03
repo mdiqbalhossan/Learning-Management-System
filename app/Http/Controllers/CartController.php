@@ -16,14 +16,14 @@ class CartController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('status', '!=', null)->all();
         $cartItems = \Cart::getContent();
         return view('cart', compact('categories', 'cartItems'));
     }
 
     public function checkout()
     {
-        $categories = Category::all();
+        $categories = Category::where('status', '!=', null)->all();
         $cartItems = \Cart::getContent();
         return view('checkout', compact('categories', 'cartItems'));
     }

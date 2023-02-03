@@ -11,17 +11,31 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController as ControllersDashboardController;
+use App\Http\Controllers\PurchaseCourseController;
 use App\Http\Controllers\SingleCourseController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::redirect('/admin', '/admin/login', 301);
+
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/category/{slug}', [WelcomeController::class, 'category'])->name('category');
 Route::get('/course', [WelcomeController::class, 'course'])->name('course');
 Route::get('/course/{slug}', [SingleCourseController::class, 'index'])->name('single.course');
-
+/****User Route */
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/dashboard', [ControllersDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [ControllersDashboardController::class, 'profile'])->name('profile');
+    Route::post('/profile', [ControllersDashboardController::class, 'profileUpdate'])->name('profile.update');
+    Route::get('/change/password', [ControllersDashboardController::class, 'changePassword'])->name('change.password');
+    Route::post('/change/password', [ControllersDashboardController::class, 'changePasswordUpdate'])->name('change.password.update');
+    Route::get('/purchase/course', [PurchaseCourseController::class, 'purchase'])->name('course.purchase');
+    Route::get('/learning/course/{slug}', [PurchaseCourseController::class, 'learning'])->name('learning.course');
+    Route::post('/lesson/details', [PurchaseCourseController::class, 'lessonDetails'])->name('lesson.details');
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -67,4 +81,10 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::post('setting/main', [SettingController::class, 'mainUpdate'])->name('setting.main.update');
     Route::get('setting/payment', [SettingController::class, 'payment'])->name('setting.payment');
     Route::post('setting/payment', [SettingController::class, 'paymentUpdate'])->name('setting.payment.update');
+    Route::get('setting/social', [SettingController::class, 'social'])->name('setting.social');
+    Route::post('setting/social', [SettingController::class, 'socialUpdate'])->name('setting.social.update');
+    Route::get('setting/slider', [SettingController::class, 'slider'])->name('setting.slider');
+    Route::post('setting/slider', [SettingController::class, 'sliderUpdate'])->name('setting.slider.update');
+    Route::get('setting/section', [SettingController::class, 'section'])->name('setting.section');
+    Route::post('setting/section', [SettingController::class, 'sectionUpdate'])->name('setting.section.update');
 });

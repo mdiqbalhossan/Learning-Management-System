@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
 
     @stack('css')
-
+    
 </head>
 
 <body id="top-header">

@@ -21,11 +21,12 @@
 
                             <div class="course-header-meta">
                                 <ul class="inline-list list-info">
-                                    {{-- <li>
+                                    <li>
                                         <div class="course-author">
-                                            <img src="assets/images/course/course-author.png" alt="#">Madge Alvarez
+                                            <img src="{{ asset('settings') }}/{{ getAdmin()->image }}" alt="#">{{
+                                            getAdmin()->name }}
                                         </div>
-                                    </li> --}}
+                                    </li>
                                     <li>
                                         <div class="course-author">
                                             <img src="{{ asset('uploads/category') }}/{{ $course->category->image }}"
@@ -42,7 +43,8 @@
                                             <span class="rating-count">(19)</span>
                                         </div>
                                     </li>
-                                    <li><i class="fa fa-user me-2"></i>11 enrolled students</li>
+                                    <li><i class="fa fa-user me-2"></i>{{ totalStudent($course->id) }} enrolled students
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -74,124 +76,45 @@
                         <div class="tab-pane fade" id="nav-topics" role="tabpanel" aria-labelledby="nav-topics-tab">
                             <div class="tutori-course-curriculum">
                                 <div class="curriculum-scrollable">
-                                    <ul class="curriculum-sections">
-                                        <li class="section">
-                                            <div class="section-header">
-                                                <div class="section-left">
-                                                    <h5 class="section-title">Change simplification</h5>
-                                                    <p class="section-desc">Dacere agemusque constantius concessis elit
-                                                        videmusne quia stoici constructio dissimillimas audiunt homerus
-                                                        commendationes</p>
+                                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        @foreach ($sections as $key => $section)
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#panelsStayOpen-{{ $section->id }}"
+                                                    aria-expanded="{{ $key == 0 ? 'true': '' }}"
+                                                    aria-controls="panelsStayOpen-collapseOne">
+                                                    {{ $section->name }}
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-{{ $section->id }}"
+                                                class="accordion-collapse collapse {{ $key == 0 ? 'show': '' }}"
+                                                aria-labelledby="panelsStayOpen-headingOne">
+                                                <div class="accordion-body">
+                                                    @php
+                                                    $lessons = getLesson($section->id, $section->course_id);
+                                                    @endphp
+                                                    <ul class="list-group">
+                                                        @foreach ($lessons as $lesson)
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-start">
+                                                            <div class="ms-2 me-auto">
+                                                                <div class="fw-bold"><i class="fa fa-play-circle"
+                                                                        aria-hidden="true"></i> {{ $lesson->name }}
+                                                                </div>
+                                                                {{ $lesson->summary }}
+                                                            </div>
+                                                            <span class="text-secondary">{{
+                                                                $lesson->duration }}</span>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
                                                 </div>
                                             </div>
+                                        </div>
+                                        @endforeach
 
-                                            <ul class="section-content">
-                                                <li class="course-item has-status course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">The importance of data nowsaday</span>
-                                                        <div class="course-item-meta">
-                                                            <span class="item-meta duration">10.30 min</span>
-                                                            <i class="item-meta course-item-status"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li class="course-item has-status course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">Why my organization should know about
-                                                            data</span>
-                                                        <div class="course-item-meta">
-                                                            <span class="item-meta duration">20.30 min</span>
-                                                            <i class="item-meta course-item-status"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li class="course-item course-item-lp_assignment course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">Assignments</span>
-                                                        <div class="course-item-meta">
-
-                                                            <span class="item-meta count-questions">14 questions</span>
-                                                            <span class="item-meta duration">10.21 min</span><i
-                                                                class="fa item-meta course-item-status trans"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="course-item course-item-lp_quiz course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">Quiz 1</span>
-                                                        <div class="course-item-meta">
-
-                                                            <span class="item-meta count-questions">14 questions</span>
-                                                            <span class="item-meta duration">5.67 min</span><i
-                                                                class="fa item-meta course-item-status trans"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <!-- section end -->
-                                        <li class="section">
-                                            <div class="section-header">
-                                                <div class="section-left">
-                                                    <h5 class="section-title">Key concepts </h5>
-                                                    <p class="section-desc">Dacere agemusque constantius concessis elit
-                                                        videmusne quia stoici constructio dissimillimas audiunt homerus
-                                                        commendationes</p>
-                                                </div>
-                                            </div>
-
-                                            <ul class="section-content">
-                                                <li class="course-item has-status course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">Basic understanding of data management
-                                                            concepts</span>
-                                                        <div class="course-item-meta">
-                                                            <span class="item-meta duration">10 min</span>
-                                                            <i class="item-meta course-item-status"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <!-- section end -->
-                                        <li class="section">
-                                            <ul class="section-content">
-                                                <li class="course-item has-status course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">Apply the principles </span>
-                                                        <div class="course-item-meta">
-                                                            <span class="item-meta duration">10 min</span>
-                                                            <i class="item-meta course-item-status"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li class="course-item has-status course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">Lesson 2</span>
-                                                        <div class="course-item-meta">
-                                                            <span class="item-meta duration">20 min</span>
-                                                            <i class="item-meta course-item-status"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li class="course-item has-status course-item-lp_lesson">
-                                                    <a class="section-item-link" href="#">
-                                                        <span class="item-name">Lesson 3</span>
-                                                        <div class="course-item-meta">
-                                                            <span class="item-meta duration">5 min</span>
-                                                            <i class="item-meta course-item-status"></i>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <!-- section end -->
-                                    </ul>
-                                    <!-- Main ul end -->
+                                    </div>
                                 </div>
                             </div>
                         </div>

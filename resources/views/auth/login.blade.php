@@ -49,6 +49,7 @@
                                     Free</a>
                             </p>
                         </div>
+                        @include('layouts.partials.error')
                         <form class="woocommerce-form woocommerce-form-login login" method="post"
                             action="{{ route('login') }}">
                             @csrf

@@ -33,16 +33,16 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                         data-bs-toggle="dropdown">
                         <div class="user-setting">
-                            <img src="{{ asset('settings') }}/{{ Auth::user()->image }}" class="user-img"
-                                alt="{{ Auth::user()->name }}">
+                            <img src="{{ asset('settings') }}/{{ Auth::guard('web')->check() ? Auth::user()->profile_photo_path : Auth::user()->image }}"
+                                class="user-img" alt="{{ Auth::user()->name }}">
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex flex-row align-items-center gap-2">
-                                    <img src="{{ asset('settings') }}/{{ Auth::user()->image }}" alt=""
-                                        class="rounded-circle" width="54" height="54">
+                                    <img src="{{ asset('settings') }}/{{ Auth::guard('web')->check() ? Auth::user()->profile_photo_path : Auth::user()->image }}"
+                                        alt="" class="rounded-circle" width="54" height="54">
                                     <div class="">
                                         <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
                                     </div>
@@ -53,7 +53,8 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                            <a class="dropdown-item"
+                                href="{{ Auth::guard('web')->check() ? route('profile') : route('admin.profile') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="">
                                         <ion-icon name="person-outline"></ion-icon>
@@ -63,7 +64,8 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('admin.change.password') }}">
+                            <a class="dropdown-item"
+                                href="{{ Auth::guard('web')->check()? route('change.password') : route('admin.change.password') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="">
                                         <ion-icon name="settings-outline"></ion-icon>
@@ -73,7 +75,8 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                            <a class="dropdown-item"
+                                href="{{ Auth::guard('web')->check() ? route('dashboard') : route('admin.dashboard') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="">
                                         <ion-icon name="speedometer-outline"></ion-icon>

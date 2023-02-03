@@ -97,6 +97,16 @@
                         <ion-icon name="ellipse-outline"></ion-icon>Payment Options
                     </a>
                 </li>
+                <li> <a href="{{ route('setting.social') }}">
+                    <ion-icon name="ellipse-outline"></ion-icon>Social Settings
+                </a>
+                <li> <a href="{{ route('setting.slider') }}">
+                    <ion-icon name="ellipse-outline"></ion-icon>Slider Settings
+                </a>
+                {{-- <li> <a href="{{ route('setting.section') }}">
+                    <ion-icon name="ellipse-outline"></ion-icon>Section Settings
+                </a> --}}
+            </li>
             </ul>
         </li>
 
@@ -110,11 +120,11 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('course.purchase') }}">
                 <div class="parent-icon">
                     <i class="fadeIn animated bx bx-label"></i>
                 </div>
-                <div class="menu-title">Course</div>
+                <div class="menu-title">Purchased Course</div>
             </a>
         </li>
         @endif

@@ -39,19 +39,19 @@ class SettingController extends Controller
             $setting->favicon = $favicon_name;
         }
 
-        if ($request->hasFile('login_background')) {
-            $destination = public_path('settings/' . $setting->login_background);
+        if ($request->hasFile('breadcrumb')) {
+            $destination = public_path('settings/' . $setting->breadcrumb_photo);
             if (File::exists($destination)) {
                 File::delete($destination);
             }
-            $login_background = $request->file('login_background');
-            $login_background_name = time() . $login_background->getClientOriginalName();
-            $login_background->move(public_path('settings/'), $login_background_name);
-            $setting->login_background = $login_background_name;
+            $breadcrumb = $request->file('breadcrumb');
+            $breadcrumb_name = time() . $breadcrumb->getClientOriginalName();
+            $breadcrumb->move(public_path('settings/'), $breadcrumb_name);
+            $setting->breadcrumb_photo = $breadcrumb_name;
         }
 
 
-        $setting->update($request->except('_token', 'logo', 'favicon', 'login_background'));
+        $setting->update($request->except('_token', 'logo', 'favicon', 'breadcrumb'));
         $notification = array(
             'message' => 'Setting Updated Successfully',
             'alert-type' => 'success'
@@ -75,4 +75,76 @@ class SettingController extends Controller
         );
         return back()->with($notification);
     }
+
+    public function social()
+    {
+        $setting = Setting::first();
+        $setting->social_link = json_decode($setting->social_link);
+        return view('admin.setting.social', compact('setting'));
+    }
+
+    public function socialUpdate(Request $request)
+    {
+        $setting = Setting::first();
+        $setting->social_link = json_encode($request->except('_token'));
+        $setting->update();
+        $notification = array(
+            'message' => 'Social Setting Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
+    }
+
+    public function slider()
+    {
+        $setting = Setting::first();
+        $setting->slider = json_decode($setting->slider);
+        return view('admin.setting.slider', compact('setting'));
+    }
+
+    public function sliderUpdate(Request $request)
+    {
+        $setting = Setting::first();
+        $setting->slider = json_decode($setting->slider);
+        $data = [];
+        $data['image'] = $setting->slider->image;
+        if($request->hasFile('image')){
+            $destination = public_path('settings/'.$setting->slider->image);
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $image = $request->file('image');
+            $image_name = time().$image->getClientOriginalName();
+            $image->move(public_path('settings/'), $image_name);
+            $data['image'] = $image_name;
+        }
+        $data['title'] = $request->title;
+        $data['description'] = $request->description;        
+        $setting->slider = json_encode($data);
+        $setting->update();
+        $notification = array(
+            'message' => 'Slider Setting Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
+    }
+
+    public function section()
+    {
+        $setting = Setting::first();
+        $setting->section = json_decode($setting->section);
+        return view('admin.setting.section', compact('setting'));
+    }
+
+    public function sectionUpdate(Request $request)
+    {
+        $setting = Setting::first();        
+        $setting->update(json_encode($request->except('_token')));
+        $notification = array(
+            'message' => 'Section Setting Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
+    }
+
 }

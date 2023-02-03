@@ -36,13 +36,15 @@
 
                     <div class="course-content">
                         <div class="course-meta meta-style-1">
-                            <span class="lessons"><i class="far fa-play-circle me-2"></i>26 Lectures</span>
+                            <span class="lessons"><i class="far fa-play-circle me-2"></i>{{ totalLesson($course->id) }}
+                                Lectures</span>
                             <span class="label">{{ Str::title($course->level) }}</span>
                         </div>
                         <h4> <a href="{{ route('single.course',$course->slug) }}">{{ $course->name }}</a> </h4>
 
                         <div class="course-footer mt-20 d-flex align-items-center justify-content-between">
-                            <span class="students"><i class="far fa-user-alt me-2"></i>51 Students</span>
+                            <span class="students"><i class="far fa-user-alt me-2"></i>{{ totalStudent($course->id) }}
+                                Students</span>
                             <a href="{{ route('single.course',$course->slug) }}" class="rounded-btn"><i
                                     class="fa fa-long-arrow-right"></i></a>
                         </div>

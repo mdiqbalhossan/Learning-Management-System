@@ -43,6 +43,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Category</th>
+                        <th>Lessons</th>
                         <th>Image</th>
                         <th>Price</th>
                         <th>Status</th>
@@ -55,6 +56,10 @@
                         <td>{{ $key+1 }}</td>
                         <td>{{ $course->name }}</td>
                         <td>{{ $course->category->name }}</td>
+                        <td>
+                            <span>Total Section:- {{ totalSection($course->id) }}</span><br>
+                            <span>Total Lesson:- {{ totalLesson($course->id) }}</span>
+                        </td>
                         <td><img src="{{ asset('uploads/course') }}/{{ $course->image }}" width="32px" alt=""></td>
                         <td>{{ $course->default_price }}</td>
                         <td>@if (($course->status != null))
@@ -84,6 +89,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Category</th>
+                        <th>Lessons</th>
                         <th>Image</th>
                         <th>Price</th>
                         <th>Status</th>

@@ -40,7 +40,7 @@
                 <div class="d-flex align-items-center">
                     <div class="">
                         <p class="mb-1">Total Income</p>
-                        <h4 class="mb-0 text-success">{{ $total['income'] }}</h4>
+                        <h4 class="mb-0 text-success">{{ setting('currency_symbol') }}{{ $total['income'] }}</h4>
                     </div>
                     <div class="ms-auto text-success fs-2">
                         <ion-icon name="wallet-sharp"></ion-icon>

@@ -37,15 +37,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('/lesson/details', [PurchaseCourseController::class, 'lessonDetails'])->name('lesson.details');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+
 
 /*********Cart Route */
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
@@ -55,7 +47,7 @@ Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkou
 Route::post('/payment', [CartController::class, 'payment'])->name('cart.payment');
 
 /***** Stripe Payment Route  */
-Route::get('/stripe', [StripeController::class, 'stripe'])->name('stripe');
+Route::get('/stripe/{enroll_id?}', [StripeController::class, 'stripe'])->name('stripe');
 Route::post('/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 
 /******* Admin Route ********/

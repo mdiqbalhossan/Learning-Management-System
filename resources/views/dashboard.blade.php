@@ -17,11 +17,11 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-around mt-4">
                     <div class="">
-                        <h4 class="mb-0">289</h4>
+                        <h4 class="mb-0">{{ $total['course'] }}</h4>
                         <p class="mb-0">Total Course</p>
                     </div>
                     <div class="">
-                        <h4 class="mb-0">42K</h4>
+                        <h4 class="mb-0">0</h4>
                         <p class="mb-0">Total Certificate</p>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                                 <div class="d-flex align-items-center mt-4">
                                     <div class="">
                                         <p class="mb-1 text-success">Total Purchased Course</p>
-                                        <h4 class="mb-0 text-success">0</h4>
+                                        <h4 class="mb-0 text-success">{{ $total['course'] }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -125,42 +125,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>#89742</td>
-                        <td>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="product-box border">
-                                    <img src="assets/images/products/11.png" alt="">
+                    @foreach ($dueCourses as $course)
+                        <tr>
+                            <td>{{ $course->course->id }}</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="product-box border">
+                                        <img src="{{ asset('uploads/course') }}/{{ $course->course->image }}" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <h6 class="product-name mb-1">{{ $course->course->name }}</h6>
+                                    </div>
                                 </div>
-                                <div class="product-info">
-                                    <h6 class="product-name mb-1">Smart Mobile Phone</h6>
+                            </td>
+                            <td>{{ $course->course->category->name }}</td>
+                            <td>{{ Str::title($course->course->level) }}</td>
+                            <td><span class="badge alert-success">{{ setting('currency_symbol') }} {{ $course->payment_amount }}</span></td>
+                            <td>{{ $course->payment_status }}</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    
+                                    
+                                    <a href="{{ route('stripe',$course->id) }}" class="text-primary">
+                                        Pay Now
+                                    </a>
+                                    
+                                    
                                 </div>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td>$214</td>
-                        <td><span class="badge alert-success">Completed</span></td>
-                        <td>Apr 8, 2021</td>
-                        <td>
-                            <div class="d-flex align-items-center gap-3 fs-6">
-                                <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" title="" data-bs-original-title="View detail"
-                                    aria-label="Views">
-                                    <ion-icon name="eye-sharp"></ion-icon>
-                                </a>
-                                <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" title="" data-bs-original-title="Edit info"
-                                    aria-label="Edit">
-                                    <ion-icon name="pencil-sharp"></ion-icon>
-                                </a>
-                                <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" title="" data-bs-original-title="Delete"
-                                    aria-label="Delete">
-                                    <ion-icon name="trash-sharp"></ion-icon>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @endforeach
+                    
 
                 </tbody>
             </table>

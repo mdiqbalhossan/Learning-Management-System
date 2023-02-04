@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Courses')
+@section('title', $category->name . ' - ' . setting('title'))
 @push('css')
 <style>
     .page-header {

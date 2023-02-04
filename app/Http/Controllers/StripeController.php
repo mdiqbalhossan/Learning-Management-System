@@ -10,10 +10,16 @@ use Stripe\Stripe;
 
 class StripeController extends Controller
 {
-    public function stripe()
+    public function stripe($id = null)
     {
+        if ($id != null) {
+            $enroll = Enroll::where('id', $id)->where('payment_status', 'pending')->first();
+            Session::put('user_enroll_id', $id);
+            Session::put('total_amount', $enroll->payment_amount);
+        } 
         return view('stripe');
-    }
+    }   
+
 
     public function stripePost(Request $request)
     {
@@ -26,7 +32,7 @@ class StripeController extends Controller
             'source' => $token,
         ]);
         $user_id =  Session::get('user_enroll_id');
-        if (isset($user_id) && count($user_id) > 0) {
+        if (isset($user_id) && is_array($user_id) > 0) {
             foreach ($user_id as $id) {
                 $enroll = Enroll::where('id', $id)->where('payment_status', 'pending')->first();
                 $enroll->payment_status = 'completed';

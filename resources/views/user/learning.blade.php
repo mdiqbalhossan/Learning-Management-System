@@ -109,7 +109,7 @@
                     },
                     success: function(data) {
                         $("#remove_iframe").remove();
-                        $(".product-card").html("<iframe style='width:100%' height='315' src='https://www.youtube.com/embed/" + data.url + "?autoplay=1'></iframe>");
+                        $(".product-card").html("<iframe style='width:100%' height='315' src='" + data.url + "?autoplay=1'></iframe>");
                         $(".card-text").html(data.summary);
                     }
                 });

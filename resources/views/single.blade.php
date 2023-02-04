@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Single Course')
+@section('title', $course->name . ' - ' . setting('title'))
 
 @section('content')
 <section class="page-wrapper">
@@ -263,13 +263,13 @@
                                 <li>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-play-circle"></i>Lectures</span>
-                                        2
+                                        {{ totalLesson($course->id) }}
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span><i class="far fa-user"></i>Students</span>
-                                        20
+                                        {{ totalStudent($course->id) }}
                                     </div>
                                 </li>
 

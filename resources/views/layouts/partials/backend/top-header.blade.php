@@ -23,6 +23,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <div class="mode-icon">
+                            <i class="lni lni-world"></i>
+                            
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link dark-mode-icon" href="javascript:;">
                         <div class="mode-icon">
                             <ion-icon name="moon-sharp"></ion-icon>

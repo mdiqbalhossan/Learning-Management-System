@@ -23,7 +23,7 @@ class CartController extends Controller
 
     public function checkout()
     {
-        $categories = Category::where('status', '!=', null)->all();
+        $categories = Category::where('status', '!=', null)->get();
         $cartItems = \Cart::getContent();
         return view('checkout', compact('categories', 'cartItems'));
     }

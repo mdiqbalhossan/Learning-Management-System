@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enroll;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $total = [
+            'course' => Enroll::where('user_id', auth()->user()->id)->where('payment_status', 'completed')->count(),
+        ];
+        $dueCourses = Enroll::where('user_id', auth()->user()->id)->where('payment_status', '!=', 'completed')->get();
+        return view('dashboard', compact('total', 'dueCourses'));
+        // dd($total);
     }
 
     public function profile()

@@ -31,7 +31,7 @@
     <div class="container">
         <div class="row">
             @if ($message = Session::get('success'))
-            <div class="p-4 mb-3 bg-success rounded">
+            <div class="p-4 mb-3 rounded">
                 <p class="text-success">{{ $message }}</p>
             </div>
             @endif

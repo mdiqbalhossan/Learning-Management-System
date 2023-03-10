@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('course_id');
-            $table->string('payment_method');
+            $table->string('payment_method')->nullable();
             $table->string('payment_status');
             $table->string('payment_amount');
             $table->string('payment_currency');

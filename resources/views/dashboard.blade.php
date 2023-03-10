@@ -105,7 +105,7 @@
 <div class="card radius-10 w-100">
     <div class="card-body">
         <div class="d-flex align-items-center">
-            <h6 class="mb-0">Due Courses</h6>
+            <h6 class="mb-0">Due/Pending Courses</h6>
             <div class="fs-5 ms-auto dropdown">
                 <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i
                         class="bi bi-three-dots"></i></div>
@@ -118,7 +118,7 @@
                         <th>#ID</th>
                         <th>Course</th>
                         <th>Category</th>
-                        <th>Level</th>
+                        <th>Payment Status</th>
                         <th>Price</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -126,36 +126,46 @@
                 </thead>
                 <tbody>
                     @foreach ($dueCourses as $course)
-                        <tr>
-                            <td>{{ $course->course->id }}</td>
-                            <td>
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="product-box border">
-                                        <img src="{{ asset('uploads/course') }}/{{ $course->course->image }}" alt="">
-                                    </div>
-                                    <div class="product-info">
-                                        <h6 class="product-name mb-1">{{ $course->course->name }}</h6>
-                                    </div>
+                    <tr>
+                        <td>{{ $course->order_number }}</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="product-box border">
+                                    <img src="{{ asset('uploads/course') }}/{{ $course->course->image }}" alt="">
                                 </div>
-                            </td>
-                            <td>{{ $course->course->category->name }}</td>
-                            <td>{{ Str::title($course->course->level) }}</td>
-                            <td><span class="badge alert-success">{{ setting('currency_symbol') }} {{ $course->payment_amount }}</span></td>
-                            <td>{{ $course->payment_status }}</td>
-                            <td>
-                                <div class="d-flex align-items-center gap-3 fs-6">
-                                    
-                                    
-                                    <a href="{{ route('stripe',$course->id) }}" class="text-primary">
-                                        Pay Now
-                                    </a>
-                                    
-                                    
+                                <div class="product-info">
+                                    <h6 class="product-name mb-1">{{ $course->course->name }}</h6>
                                 </div>
-                            </td>
-                        </tr>
+                            </div>
+                        </td>
+                        <td>{{ $course->course->category->name }}</td>
+                        <td>{{ $course->payment_status }}</td>
+                        <td><span class="badge alert-success">{{ setting('currency_symbol') }} {{
+                                $course->payment_amount }}</span></td>
+                        <td>
+                            @if ($course->status == 'accepted')
+                            <span class="badge alert-success">{{ Str::title($course->status) }}</span>
+                            @elseif ($course->status == 'pending')
+                            <span class="badge alert-warning">{{ Str::title($course->status) }}</span>
+                            @else
+                            <span class="badge alert-danger">{{ Str::title($course->status) }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3 fs-6">
+
+
+                                @if ($course->payment_status != 'completed')
+                                <a href="{{ route('stripe',$course->id) }}" class="text-primary">
+                                    Pay Now
+                                </a>
+                                @endif
+
+                            </div>
+                        </td>
+                    </tr>
                     @endforeach
-                    
+
 
                 </tbody>
             </table>

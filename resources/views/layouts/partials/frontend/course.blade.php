@@ -29,8 +29,15 @@
                     <div class="course-header">
                         <div class="course-thumb">
                             <img src="{{ asset('uploads/course') }}/{{ $course->image }}" alt="" class="img-fluid">
-                            <div class="course-price">{{ setting('currency_symbol') }} {{ $course->default_price ??
-                                $course->current_price }}</div>
+                            <div class="course-price">
+                                @if ($course->is_free == 'on')
+                                    <span class="price">Free</span>
+                                @else
+                                {{ setting('currency_symbol') }} {{ $course->default_price ??
+                                    $course->current_price }}
+                                @endif
+                                
+                            </div>
                         </div>
                     </div>
 

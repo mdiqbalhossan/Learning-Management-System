@@ -86,7 +86,7 @@
 
                         <div class="course-footer mt-20 d-flex align-items-center justify-content-between">
                             <div class="course-price">
-                                @if ($course->is_free == 1)
+                                @if ($course->is_free == 'on')
                                 <span class="price">Free</span>
                                 @else
                                 {{ setting('currency_symbol') }} {{ $course->current_price ?

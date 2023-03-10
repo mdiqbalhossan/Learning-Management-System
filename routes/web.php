@@ -10,14 +10,16 @@ use App\Http\Controllers\Admin\RegisteredAdminController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Bkash\BkashController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController as ControllersDashboardController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PurchaseCourseController;
 use App\Http\Controllers\SingleCourseController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Session;
 
 Route::redirect('/admin', '/admin/login', 301);
 
@@ -38,6 +40,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 
 
+/*******Bkash Route */
+Route::get('bkash', function () {
+    return view('bkash-payment');
+});
+Route::post('token', [BkashController::class, 'token'])->name('token');
+Route::get('createpayment', [BkashController::class, 'createpayment'])->name('createpayment');
+Route::get('executepayment', [BkashController::class, 'executepayment'])->name('executepayment');
+
 
 /*********Cart Route */
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
@@ -45,6 +55,10 @@ Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::post('/payment', [CartController::class, 'payment'])->name('cart.payment');
+
+/**** Custom Payment Route */
+Route::get('/payment/{enroll_id?}', [PaymentController::class, 'index'])->name('payment.get');
+Route::post('/payment-success', [PaymentController::class, 'paymentPost'])->name('payment.post');
 
 /***** Stripe Payment Route  */
 Route::get('/stripe/{enroll_id?}', [StripeController::class, 'stripe'])->name('stripe');

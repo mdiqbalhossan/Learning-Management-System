@@ -12,7 +12,10 @@ class PurchaseCourseController extends Controller
 {
     public function purchase()
     {
-        $courses = Enroll::where('user_id', auth()->user()->id)->where('payment_status', 'completed')->get();
+        $courses = Enroll::where('user_id', auth()->user()->id)
+            ->where('payment_status', 'completed')
+            ->where('status', 'accepted')
+            ->get();
         return view('user.course', compact('courses'));
     }
 

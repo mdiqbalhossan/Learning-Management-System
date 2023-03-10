@@ -14,11 +14,13 @@ class DashboardController extends Controller
     public function index()
     {
         $total = [
-            'course' => Enroll::where('user_id', auth()->user()->id)->where('payment_status', 'completed')->count(),
+            'course' => Enroll::where('user_id', auth()->user()->id)->where('payment_status', 'completed')->where('status', 'accepted')->count(),
         ];
-        $dueCourses = Enroll::where('user_id', auth()->user()->id)->where('payment_status', '!=', 'completed')->get();
+        $dueCourses = Enroll::where('user_id', auth()->user()->id)
+            ->where('status', 'pending')
+            ->get();
         return view('dashboard', compact('total', 'dueCourses'));
-        // dd($total);
+        // dd($dueCourses);
     }
 
     public function profile()

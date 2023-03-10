@@ -12,8 +12,10 @@
         "laravel/jetstream": "^2.14",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "laravel/vapor-core": "^2.28",
         "livewire/livewire": "^2.5",
         "mckenziearts/laravel-notify": "^2.3",
+        "shipu/bkash": "^2.0",
         "stripe/stripe-php": "^10.3"
     },
     "require-dev": {

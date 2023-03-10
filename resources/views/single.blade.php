@@ -249,7 +249,7 @@
                                 @endif
                                 @endif
 
-                                <span class="course-price-badge onsale">39% off</span>
+                                {{-- <span class="course-price-badge onsale">39% off</span> --}}
                             </div>
 
                             <ul class="course-sidebar-list">
@@ -286,7 +286,11 @@
                                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                                     <input type="hidden" name="course_name" value="{{ $course->name }}">
                                     <input type="hidden" name="course_price"
-                                        value="{{ $course->current_price ?? $course->default_price }}">
+                                        value="@if ($course->is_free == 'on')
+                                            {{ 0 }}
+                                        @else
+                                            {{ $course->current_price ?? $course->default_price }}
+                                        @endif">
                                     <input type="hidden" name="course_slug" value="{{ $course->slug }}">
                                     <input type="hidden" name="course_image" value="{{ $course->image }}">
                                     <button type="submit" class="button button-enroll-course btn btn-main-2 rounded">

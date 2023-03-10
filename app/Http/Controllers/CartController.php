@@ -51,6 +51,7 @@ class CartController extends Controller
 
     public function payment(Request $request)
     {
+        $referenceNumber = date('YmdHis');
         $total = \Cart::getTotal();
         $enroll_id = [];
         if (!$request->user_id) {
@@ -60,10 +61,9 @@ class CartController extends Controller
                 $enroll = new Enroll();
                 $enroll->user_id = $user_id;
                 $enroll->course_id = $cartItem->id;
-                $enroll->payment_method = 'stripe';
                 $enroll->payment_status = 'pending';
                 $enroll->payment_amount = $cartItem->price;
-                $enroll->payment_currency = 'USD';
+                $enroll->payment_currency = setting('currency');
                 $enroll->save();
                 $enroll_id[] = $enroll->id;
             }
@@ -74,10 +74,10 @@ class CartController extends Controller
                 $enroll = new Enroll();
                 $enroll->user_id = auth()->user()->id;
                 $enroll->course_id = $cartItem->id;
-                $enroll->payment_method = 'stripe';
                 $enroll->payment_status = 'pending';
                 $enroll->payment_amount = $cartItem->price;
-                $enroll->payment_currency = 'USD';
+                $enroll->payment_currency =
+                    setting('currency');;
                 $enroll->save();
                 $enroll_id[] = $enroll->id;
             }
@@ -87,15 +87,35 @@ class CartController extends Controller
         $session = [
             'total_amount' => $total,
             'enroll_id' => $enroll_id,
+            'reference_number' => $referenceNumber,
         ];
-        return redirect()->route('stripe')->with($session);
+
+        if ($total == 0) {
+            if (isset($enroll_id) && is_array($enroll_id) > 0) {
+                foreach ($enroll_id as $id) {
+                    $enroll = Enroll::where('id', $id)->where('payment_status', 'pending')->first();
+                    $enroll->payment_status = 'completed';
+                    $enroll->payment_time = date('Y-m-d');
+                    $enroll->save();
+                }
+            } else {
+                $enroll = Enroll::where('id', $enroll_id)->where('payment_status', 'pending')->first();
+                $enroll->payment_status = 'completed';
+                $enroll->payment_time = date('Y-m-d');
+                $enroll->save();
+            }
+            Session::flash('success', 'Payment successful!');
+            return redirect()->route('dashboard');
+        } else {
+            return redirect()->route('payment.get')->with($session);
+        }
     }
 
     public function createAccount($request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required|confirmed'
         ]);
 

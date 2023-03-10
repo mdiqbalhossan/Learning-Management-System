@@ -8,20 +8,25 @@
     <div class="my-3 border-bottom"></div>
 </div>
 <div class="row row-cols-1 row-cols-lg-3">
-    @foreach ($courses as $course)
-    <div class="col">
-        <div class="card">
-            <img src="{{ asset('uploads/course') }}/{{ $course->course->image }}" class="card-img-top"
-                style="height: 200px;" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ $course->course->name }}</h5>
-                <p class="card-text">{{ $course->course->short_description }}</p>
-                <a href="{{ route('learning.course',$course->course->slug) }}" class="btn btn-primary">Start
-                    Learning</a>
+    @if (count($courses) < 0) <h4 class="text-info">No course purchase yet. or course purchase but admin not accepted
+        your transaction. Please
+        contact our admin.</h4>
+        @else
+        @foreach ($courses as $course)
+        <div class="col">
+            <div class="card">
+                <img src="{{ asset('uploads/course') }}/{{ $course->course->image }}" class="card-img-top"
+                    style="height: 200px;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $course->course->name }}</h5>
+                    <p class="card-text">{{ $course->course->short_description }}</p>
+                    <a href="{{ route('learning.course',$course->course->slug) }}" class="btn btn-primary">Start
+                        Learning</a>
+                </div>
             </div>
         </div>
-    </div>
-    @endforeach
+        @endforeach
+        @endif
 
 
 </div>

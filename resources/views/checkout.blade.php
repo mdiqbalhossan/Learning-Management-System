@@ -1,15 +1,6 @@
 @extends('layouts.master')
 @section('title','Checkout')
-@push('css')
-<style>
-    .page-header {
-        background: url( {{ asset('settings') }}/{{ setting('breadcrumb_photo') }} ) !important;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-</style>
-@endpush
+
 @section('content')
 <section class="page-header">
     <div class="container">
@@ -222,9 +213,9 @@
                                                             data-order_button_text="" style="display: none;">
 
                                                         <label for="payment_method_cod">
-                                                            Card </label>
+                                                            Bkash/Nagad </label>
                                                         <div class="payment_box payment_method_cod">
-                                                            <p>Pay with card</p>
+                                                            <p>Pay with Bkash/Nagad</p>
                                                         </div>
                                                     </li>
                                                 </ul>

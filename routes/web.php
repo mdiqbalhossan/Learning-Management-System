@@ -83,6 +83,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::post('lesson_course', [LessonController::class, 'section_id'])->name('section_id');
     Route::resource('student', StudentController::class);
     Route::get('purchase', [PurchaseController::class, 'index'])->name('purchase.course');
+    Route::get('purchase/edit/{id}', [PurchaseController::class, 'edit'])->name('purchase.course.edit');
+    Route::post('purchase/edit/{id}', [PurchaseController::class, 'update'])->name('purchase.course.update');
     Route::get('setting/main', [SettingController::class, 'main'])->name('setting.main');
     Route::post('setting/main', [SettingController::class, 'mainUpdate'])->name('setting.main.update');
     Route::get('setting/payment', [SettingController::class, 'payment'])->name('setting.payment');

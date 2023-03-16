@@ -42,12 +42,12 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="col-12">
-                            <label class="form-label">STRIPE KEY</label>
-                            <input type="text" class="form-control" value="{{ env('STRIPE_KEY') }}">
+                            <label class="form-label">Bkash Number</label>
+                            <input type="text" class="form-control" name="bkash" value="{{ $setting->bkash }}">
                         </div>
                         <div class="col-12">
-                            <label class="form-label">STRIPE SECRET</label>
-                            <input type="text" class="form-control" value="{{ env('STRIPE_SECRET') }}">
+                            <label class="form-label">Nagad Number</label>
+                            <input type="text" class="form-control" name="nagad" value="{{ $setting->nagad }}">
                         </div>
                         <div class="col-12">
                             <label class="form-label">Currency</label>

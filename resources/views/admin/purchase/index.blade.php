@@ -40,41 +40,59 @@
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Order ID</th>
                         <th>Student</th>
                         <th>Course</th>
                         <th>Payment Method</th>
                         <th>Payment Status</th>
                         <th>Payment Amount</th>
                         <th>Payment Date</th>
+                        <th>Payment Number</th>
+                        <th>Transaction Id</th>
+                        <th>Reference Number</th>
                         <th>Payment Currency</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($enroll_courses as $key=>$course)
                     <tr>
-                        <td>{{ $key+1 }}</td>
+                        <td>{{ $course->order_number }}</td>
                         <td>{{ $course->user->name }}</td>
                         <td>{{ $course->course->name }}</td>
-                        <td>{{ $course->payment_method }}</td>
-                        <td>{{ $course->payment_status }}</td>
-                        <td>{{ $course->payment_amount }}</td>
+                        <td>{{ Str::title($course->payment_method) }}</td>
+                        <td>{{ Str::title($course->payment_status) }}</td>
+                        <td>{{ setting('currency_symbol') }}{{ $course->payment_amount }}</td>
                         <td>{{ $course->payment_time }}</td>
+                        <td>{{ $course->payment_number }}</td>
+                        <td>{{ $course->transaction_id }}</td>
+                        <td>{{ $course->reference_number }}</td>
                         <td>{{ $course->payment_currency }}</td>
+                        <td>{{ Str::title($course->status) }}</td>
+                        <td>
+                            <a href="{{ route('purchase.course.edit', $course->id) }}" class="btn btn-success btn-sm"><i
+                                    class="fadeIn animated bx bx-edit"></i></a>
+                        </td>
                     </tr>
                     @endforeach
 
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th>Order ID</th>
                         <th>Student</th>
                         <th>Course</th>
                         <th>Payment Method</th>
                         <th>Payment Status</th>
                         <th>Payment Amount</th>
                         <th>Payment Date</th>
+                        <th>Payment Number</th>
+                        <th>Transaction Id</th>
+                        <th>Reference Number</th>
                         <th>Payment Currency</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </tfoot>
             </table>

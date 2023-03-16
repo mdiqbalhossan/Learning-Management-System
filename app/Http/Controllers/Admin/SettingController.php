@@ -108,18 +108,18 @@ class SettingController extends Controller
         $setting->slider = json_decode($setting->slider);
         $data = [];
         $data['image'] = $setting->slider->image;
-        if($request->hasFile('image')){
-            $destination = public_path('settings/'.$setting->slider->image);
-            if(File::exists($destination)){
+        if ($request->hasFile('image')) {
+            $destination = public_path('settings/' . $setting->slider->image);
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $image = $request->file('image');
-            $image_name = time().$image->getClientOriginalName();
+            $image_name = time() . $image->getClientOriginalName();
             $image->move(public_path('settings/'), $image_name);
             $data['image'] = $image_name;
         }
         $data['title'] = $request->title;
-        $data['description'] = $request->description;        
+        $data['description'] = $request->description;
         $setting->slider = json_encode($data);
         $setting->update();
         $notification = array(
@@ -138,7 +138,7 @@ class SettingController extends Controller
 
     public function sectionUpdate(Request $request)
     {
-        $setting = Setting::first();        
+        $setting = Setting::first();
         $setting->update(json_encode($request->except('_token')));
         $notification = array(
             'message' => 'Section Setting Updated Successfully',
@@ -146,5 +146,4 @@ class SettingController extends Controller
         );
         return back()->with($notification);
     }
-
 }

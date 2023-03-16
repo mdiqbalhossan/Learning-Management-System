@@ -156,7 +156,7 @@
 
 
                                 @if ($course->payment_status != 'completed')
-                                <a href="{{ route('stripe',$course->id) }}" class="text-primary">
+                                <a href="{{ route('payment.get',$course->id) }}" class="text-primary">
                                     Pay Now
                                 </a>
                                 @endif

@@ -13,7 +13,7 @@
                         <ion-icon name="copy-sharp"></ion-icon>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Purchase Status</li>
             </ol>
         </nav>
     </div>
@@ -21,7 +21,7 @@
 <!--end breadcrumb-->
 <div class="row align-items-end">
     <div class="col">
-        <h6 class="mb-0 text-uppercase d-inline">Edit Category</h6>
+        <h6 class="mb-0 text-uppercase d-inline">Edit Purchase Status</h6>
     </div>
     <div class="col">
         <button type="button" class="btn btn-danger px-3 float-end">
@@ -38,30 +38,30 @@
                 <div class="border p-3 rounded">
                     <h6 class="mb-0 text-uppercase">Edit Category</h6>
                     <hr>
-                    <form class="row g-3" method="post" action="{{ route('category.update',$category->id) }}"
+                    <form class="row g-3" method="post"
+                        action="{{ route('purchase.course.update',$enroll_courses->id) }}"
                         enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
-                        <div class="col-12">
-                            <label class="form-label">Category Name <span class="text-danger">(*)</span></label>
-                            <input type="text" class="form-control" name="name" value="{{ $category->name }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload Image</label>
-                            <input class="form-control" type="file" name="image">
-                        </div>
                         <div class="col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1" name="status" {{
-                                    ($category->status != null) ? 'checked':'' }}>
                                 <label class="form-check-label" for="gridCheck1">
-                                    Published
+                                    Select Status
                                 </label>
+                                <select class="form-select mb-3" aria-label="Default select example" name="status">
+                                    <option selected="">Open this select menu</option>
+                                    <option value="accepted" {{ $enroll_courses->status == 'accepted' ? 'selected' : ''
+                                        }}>Accepted</option>
+                                    <option value="pending" {{ $enroll_courses->status == 'pending' ? 'selected' : ''
+                                        }}>Pending</option>
+                                    <option value="cancelled" {{ $enroll_courses->status == 'cancelled' ? 'selected' :
+                                        ''
+                                        }}>Cancel</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Update Category</button>
+                                <button type="submit" class="btn btn-primary">Update Status</button>
                             </div>
                         </div>
                     </form>

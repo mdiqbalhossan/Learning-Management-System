@@ -89,7 +89,7 @@
                                 <ol class="my-2">
                                     <li>Dial *247# from your bKash registered mobile number.</li>
                                     <li>Select "Send Money" by entering '1'.</li>
-                                    <li>Enter the recipient's bKash number. (016********)</li>
+                                    <li>Enter the recipient's bKash number. ({{ setting('bkash') }})</li>
                                     <li>Enter the amount you want to send.</li>
                                     <li>Add a reference if you want to (optional).</li>
                                     <li>Enter your bKash PIN.</li>
@@ -99,7 +99,7 @@
                                 <ol class="my-2">
                                     <li>Open the bKash app and log in.</li>
                                     <li>Tap on the 'Send Money' option on the home screen.</li>
-                                    <li>Enter the recipient's bKash number. (016********)</li>
+                                    <li>Enter the recipient's bKash number. ({{ setting('bkash') }})</li>
                                     <li>Enter the amount you want to send.</li>
                                     <li>Add a reference if you want to (optional).</li>
                                     <li>Tap on 'Next'.</li>
@@ -110,7 +110,8 @@
                                 <ol class="my-2">
                                     <li>Dial *167# from your Nagad registered mobile number.</li>
                                     <li>Select "Send Money" by entering '2'.</li>
-                                    <li>Enter the recipient's Nagad account number or mobile number. (016********)</li>
+                                    <li>Enter the recipient's Nagad account number or mobile number. ({{
+                                        setting('nagad') }})</li>
                                     <li>Enter the amount you want to send.</li>
                                     <li>Add a reference if you want to (optional).</li>
                                     <li>Enter your Nagad PIN.</li>
@@ -120,7 +121,8 @@
                                 <ol class="my-2">
                                     <li>Open the Nagad app and log in.</li>
                                     <li>Tap on the 'Send Money' option on the home screen.</li>
-                                    <li>Enter the recipient's Nagad account number or mobile number. (016********)</li>
+                                    <li>Enter the recipient's Nagad account number or mobile number. ({{
+                                        setting('nagad') }})</li>
                                     <li>Enter the amount you want to send.</li>
                                     <li>Add a reference if you want to (optional).</li>
                                     <li>Tap on 'Next'.</li>

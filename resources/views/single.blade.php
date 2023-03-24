@@ -33,16 +33,6 @@
                                                 alt="#">{{ $course->category->name }}
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="list-rating">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span class="rating-count">(19)</span>
-                                        </div>
-                                    </li>
                                     <li><i class="fa fa-user me-2"></i>{{ totalStudent($course->id) }} enrolled students
                                     </li>
                                 </ul>
@@ -58,8 +48,9 @@
                             {{-- <a class="nav-item nav-link" id="nav-instructor-tab" data-bs-toggle="tab"
                                 href="#nav-instructor" role="tab" aria-controls="nav-instructor-tab"
                                 aria-selected="false">Instructor</a> --}}
-                            <a class="nav-item nav-link" id="nav-feedback-tab" data-bs-toggle="tab" href="#nav-feedback"
-                                role="tab" aria-controls="nav-feedback-tab" aria-selected="false">Reviews</a>
+                            {{-- <a class="nav-item nav-link" id="nav-feedback-tab" data-bs-toggle="tab"
+                                href="#nav-feedback" role="tab" aria-controls="nav-feedback-tab"
+                                aria-selected="false">Reviews</a> --}}
                         </div>
                     </nav>
 
@@ -285,8 +276,7 @@
                                     @csrf
                                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                                     <input type="hidden" name="course_name" value="{{ $course->name }}">
-                                    <input type="hidden" name="course_price"
-                                        value="@if ($course->is_free == 'on')
+                                    <input type="hidden" name="course_price" value="@if ($course->is_free == 'on')
                                             {{ 0 }}
                                         @else
                                             {{ $course->current_price ?? $course->default_price }}

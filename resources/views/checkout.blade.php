@@ -9,7 +9,7 @@
                 <div class="title-block">
                     <h1>Checkout</h1>
                     <ul class="header-bradcrumb justify-content-center">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li class="active" aria-current="page">Checkout</li>
                     </ul>
                 </div>

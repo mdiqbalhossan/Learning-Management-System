@@ -36,11 +36,11 @@
 @include('layouts.partials.frontend.work')
 <!-- Work Process Section End -->
 <!-- Testimonial section start -->
-@include('layouts.partials.frontend.testimonial')
+{{-- @include('layouts.partials.frontend.testimonial') --}}
 <!-- Testimonial section End -->
 
 <!-- InstructorsSection Start -->
-@include('layouts.partials.frontend.instructor')
+{{-- @include('layouts.partials.frontend.instructor') --}}
 <!--Instructors Section End -->
 
 @endsection

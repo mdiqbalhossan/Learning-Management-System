@@ -14,7 +14,14 @@
                         <div class="counter-box bg-1 mb-4 mb-lg-0">
                             <i class="flaticon-man"></i>
                             <div class="count">
-                                <span class="counter h2">2</span><span>k</span>
+                                @if (totalCount('student') < 1000) <span class="counter h2">{{ totalCount('student')
+                                    }}</span>
+                                    @else
+                                    @php
+                                    $total = $totalCount('student')/1000;
+                                    @endphp
+                                    <span class="counter h2">{{ $total }}</span><span>k</span>
+                                    @endif
                             </div>
                             <p>Students</p>
                         </div>
@@ -24,7 +31,7 @@
                         <div class="counter-box bg-2 mb-4 mb-lg-0">
                             <i class="flaticon-infographic"></i>
                             <div class="count">
-                                <span class="counter h2">120</span><span>+</span>
+                                <span class="counter h2">{{ totalCount('course') }}</span><span>+</span>
                             </div>
                             <p>Online Courses</p>
                         </div>

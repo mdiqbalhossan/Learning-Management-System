@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{ asset('settings') }}/{{ setting('favicon') }}" type="image/x-icon">
     <!-- loader-->
     <link href="{{ asset('backend') }}/assets/css/pace.min.css" rel="stylesheet" />
     <script src="{{ asset('backend') }}/assets/js/pace.min.js"></script>

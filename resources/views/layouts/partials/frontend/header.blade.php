@@ -11,10 +11,14 @@
                 <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="header-socials text-center text-lg-end">
                         <ul class="list-inline">
-                            <li class="list-inline-item"><a href="{{ settingSocial('facebook') }}"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item"><a href="{{ settingSocial('twitter') }}"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="{{ settingSocial('linkedin') }}"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li class="list-inline-item"><a href="{{ settingSocial('youtube') }}"><i class="fab fa-youtube"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('facebook') }}"><i
+                                        class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('twitter') }}"><i
+                                        class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('linkedin') }}"><i
+                                        class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ settingSocial('youtube') }}"><i
+                                        class="fab fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -54,17 +58,18 @@
                         <li class="current">
                             <a href="{{ route('home') }}">Home</a>
                         </li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="{{ route('about') }}">About</a></li>
 
                         <li>
                             <a href="{{ route('course') }}">Courses</a>
                         </li>
 
                         <li>
-                            <a href="blog.html">Blog</a>
+                            <a href="#"
+                                onclick="alert('Blog module deactivated. This module will activate as soon as possible.')">Blog</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="{{ route('contact') }}">Contact</a>
                         </li>
                     </ul>
 
@@ -84,7 +89,7 @@
                     <form action="{{ route('logout') }}" method="POST" id="frm-logout">
                         @csrf
                     </form>
-                    
+
                     @else
                     <a href="{{ route('login') }}" class="login">Login</a>
                     <a href="{{ route('register') }}" class="btn btn-main-2 btn-sm-2 rounded">Sign up</a>

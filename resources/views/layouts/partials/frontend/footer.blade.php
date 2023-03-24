@@ -15,8 +15,8 @@
                     <div class="footer-widget mb-5 mb-xl-0">
                         <h5 class="widget-title">Explore</h5>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="{{ route('about') }}">About us</a></li>
+                            <li><a href="{{ route('contact') }}">Contact us</a></li>
                             <li><a href="#">Services</a></li>
                             <li><a href="#">Support</a></li>
                         </ul>
@@ -27,9 +27,9 @@
                     <div class="footer-widget mb-5 mb-xl-0">
                         <h5 class="widget-title ">Categories</h5>
                         <ul class="list-unstyled footer-links">
-                            @foreach ($categories as $category)
+                            @foreach (footer_categories() as $category)
                             <li><a href="{{ route('category', $category->slug) }}">{{ $category->name }}</a></li>
-                            @endforeach                            
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -52,10 +52,12 @@
                         <p>{{ setting('address') }}</p>
                         <ul class="list-unstyled footer-links">
                             <li>
-                                <h6 class="text-white">Phone</h6><a href="tel:{{ setting('phone') }}">{{ setting('phone') }}</a>
+                                <h6 class="text-white">Phone</h6><a href="tel:{{ setting('phone') }}">{{
+                                    setting('phone') }}</a>
                             </li>
                             <li>
-                                <h6 class="text-white">Email</h6><a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a>
+                                <h6 class="text-white">Email</h6><a href="mailto:{{ setting('email') }}">{{
+                                    setting('email') }}</a>
                             </li>
                         </ul>
                         <div class="footer-socials mt-4">

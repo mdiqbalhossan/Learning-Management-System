@@ -8,9 +8,10 @@
                 </div>
             </div>
             <div class="col-xl-6">
-                <p class="text-center text-lg-start">Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-                    venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod.
-                    Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis.</p>
+                <p class="text-center text-lg-start">Brainacademia offers a variety of features to support a
+                    personalized and engaging learning experience, including multimedia content, gamification, social
+                    learning, and collaboration tools. Learners can access course materials, complete assessments, and
+                    receive personalized feedback and support from skilled instructors.</p>
             </div>
         </div>
 
@@ -21,7 +22,8 @@
                         <div class="step-number bg-1">01</div>
                         <div class="step-text">
                             <h5>Signup with all info</h5>
-                            <p>Lorem ipsum dolor seat ameat dui too consecteture elite adipaising.</p>
+                            <p>Signing up for our Learning Management System (Brainacademia) is easy and
+                                straightforward.</p>
                         </div>
                     </div>
                 </div>
@@ -33,7 +35,9 @@
                         <div class="step-number bg-2">02</div>
                         <div class="step-text">
                             <h5>Take your Admission</h5>
-                            <p>Lorem ipsum dolor seat ameat dui too consecteture elite adipaising.</p>
+                            <p>Taking admission in our Learning Management System (Brainacademia) is a simple process
+                                that can be
+                                done in a few easy steps.</p>
                         </div>
                     </div>
                 </div>
@@ -45,7 +49,9 @@
                         <div class="step-number bg-3">03</div>
                         <div class="step-text">
                             <h5>Learn from online </h5>
-                            <p>Lorem ipsum dolor seat ameat dui too consecteture elite adipaising.</p>
+                            <p>Brainacademia allows learners to easily learn from online courses
+                                and training programs from the
+                                comfort of their own home or office.</p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +63,7 @@
                         <div class="step-number bg-2">04</div>
                         <div class="step-text">
                             <h5>Get certificate</h5>
-                            <p>Lorem ipsum dolor seat ameat dui too consecteture elite adipaising.</p>
+                            <p>In Brainacademia, certificates can be awarded to learners who successfully complete a course or program within the system.</p>
                         </div>
                     </div>
                 </div>

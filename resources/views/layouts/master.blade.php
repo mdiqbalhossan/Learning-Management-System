@@ -3,11 +3,11 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Edumel- Education Html Template by dreambuzz">
+    <meta name="description" content="{{ setting('description') }}">
     <meta name="keywords"
         content="education,edumel,instructor,lms,online,instructor,dreambuzz,bootstrap,kindergarten,tutor,e learning">
-    <meta name="author" content="dreambuzz">
-
+    <meta name="author" content="Md Iqbal">
+    <link rel="icon" href="{{ asset('settings') }}/{{ setting('favicon') }}" type="image/x-icon">
     <title>@yield('title')</title>
 
     <!-- Mobile Specific Meta-->
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
 
     @stack('css')
-    
+
 </head>
 
 <body id="top-header">

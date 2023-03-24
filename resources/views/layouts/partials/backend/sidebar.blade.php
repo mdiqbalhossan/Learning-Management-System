@@ -1,7 +1,7 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="{{ asset('backend') }}/assets/images/logo-icon-2.png" class="logo-icon" alt="logo icon">
+            <img src="{{ asset('settings') }}/{{ setting('favicon') }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">{{ Auth::guard('admin')->check() ? 'Admin' : 'User' }}</h4>
@@ -98,15 +98,16 @@
                     </a>
                 </li>
                 <li> <a href="{{ route('setting.social') }}">
-                    <ion-icon name="ellipse-outline"></ion-icon>Social Settings
-                </a>
+                        <ion-icon name="ellipse-outline"></ion-icon>Social Settings
+                    </a>
                 <li> <a href="{{ route('setting.slider') }}">
-                    <ion-icon name="ellipse-outline"></ion-icon>Slider Settings
-                </a>
-                {{-- <li> <a href="{{ route('setting.section') }}">
-                    <ion-icon name="ellipse-outline"></ion-icon>Section Settings
-                </a> --}}
-            </li>
+                        <ion-icon name="ellipse-outline"></ion-icon>Slider Settings
+                    </a>
+                    {{--
+                <li> <a href="{{ route('setting.section') }}">
+                        <ion-icon name="ellipse-outline"></ion-icon>Section Settings
+                    </a> --}}
+                </li>
             </ul>
         </li>
 

@@ -9,7 +9,9 @@
                         </div>
                         <div class="feature-text">
                             <h4>Get Certificate</h4>
-                            <p>Lorem ipsum dolor seat ameat dui too consecteture</p>
+                            <p>In Brainacademia, certificates can be awarded to learners who
+                                successfully complete a course or
+                                program within the system.</p>
                         </div>
                     </div>
                 </div>
@@ -21,7 +23,9 @@
                         </div>
                         <div class="feature-text">
                             <h4>Skilled Instructors</h4>
-                            <p>Lorem ipsum dolor seat ameat dui too consecteture</p>
+                            <p>Brainacademia provide skilled instructors with a platform to
+                                create and deliver high-quality
+                                courses and training programs.</p>
                         </div>
                     </div>
                 </div>
@@ -33,7 +37,9 @@
                         </div>
                         <div class="feature-text">
                             <h4>Online Classes</h4>
-                            <p>Lorem ipsum dolor seat ameat dui too consecteture</p>
+                            <p>Brainacademia facilitate the delivery of online classes by providing a platform for
+                                instructors
+                                to create and manage digital course content, assessments, and evaluations.</p>
                         </div>
                     </div>
                 </div>

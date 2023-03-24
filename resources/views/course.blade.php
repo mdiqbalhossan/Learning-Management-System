@@ -3,14 +3,7 @@
 @section('title', 'Courses')
 
 @push('css')
-<style>
-    .page-header {
-        background: url( {{ asset('settings') }}/{{ setting('breadcrumb_photo') }} ) !important;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-</style>
+
 @endpush
 
 @section('content')
@@ -21,7 +14,7 @@
                 <div class="title-block">
                     <h1>Courses</h1>
                     <ul class="header-bradcrumb justify-content-center">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li class="active" aria-current="page">Courses</li>
                     </ul>
                 </div>
@@ -77,7 +70,7 @@
                                 <div class="author me-3">
                                     <img src="{{ asset('settings') }}/{{ getAdmin()->image }}" alt="" class="img-fluid">
                                     By <a href="#">{{ getAdmin()->name }}</a>
-                                    
+
                                 </div>
                                 <span class="students"><i class="far fa-user-alt me-2"></i>{{ totalStudent($course->id)
                                     }} Students</span>

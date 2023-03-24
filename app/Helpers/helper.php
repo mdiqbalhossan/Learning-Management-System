@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Course;
+use App\Models\Enroll;
 use App\Models\Setting;
-
+use App\Models\User;
 
 function setting($key)
 {
@@ -57,16 +60,17 @@ function getAdmin()
     return $admin;
 }
 
-function setEnvironmentValue($envKey, $envValue)
+function totalCount($type)
 {
-    $envFile = app()->environmentFilePath();
-    $str = file_get_contents($envFile);
+    $student = User::count();
+    $course = Course::where('status', '!=', null)->count();
 
-    $oldValue = strtok($str, "{$envKey}=");
+    if ($type == 'student') return $student;
+    else if ($type == 'course') return $course;
+}
 
-    $str = str_replace("{$envKey}={$oldValue}", "{$envKey}={$envValue}\n", $str);
-
-    $fp = fopen($envFile, 'w');
-    fwrite($fp, $str);
-    fclose($fp);
+function footer_categories()
+{
+    $categories = Category::where('status', '!=', null)->limit(4)->get();
+    return $categories;
 }

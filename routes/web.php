@@ -27,6 +27,11 @@ Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/category/{slug}', [WelcomeController::class, 'category'])->name('category');
 Route::get('/course', [WelcomeController::class, 'course'])->name('course');
 Route::get('/course/{slug}', [SingleCourseController::class, 'index'])->name('single.course');
+
+Route::get('/about', [WelcomeController::class, 'about'])->name('about');
+Route::get('/blog', [WelcomeController::class, 'blog'])->name('blog');
+Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
+
 /****User Route */
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', [ControllersDashboardController::class, 'index'])->name('dashboard');
